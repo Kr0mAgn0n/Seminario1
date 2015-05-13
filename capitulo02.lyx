@@ -1,0 +1,1409 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass book
+\begin_preamble
+\usepackage{pgfplots}
+\end_preamble
+\use_default_options true
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\language spanish-mexico
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Series de Tiempo Estacionarias
+\end_layout
+
+\begin_layout Standard
+En este capítulo estudiaremos las series de tiempo estacionarias y los tipos
+ de modelos que existen en este tipo de series para describir un fenómeno.
+\end_layout
+
+\begin_layout Section
+Definición y propiedades
+\end_layout
+
+\begin_layout Definition
+Sea 
+\begin_inset Formula $z_{t}$
+\end_inset
+
+ una serie de tiempo.
+ A 
+\begin_inset Formula $z_{t}$
+\end_inset
+
+ se le llama 
+\emph on
+serie de tiempo estacionaria 
+\emph default
+si el proceso estocástico 
+\begin_inset Formula $Z_{t}$
+\end_inset
+
+ que la genera cumple que 
+\begin_inset Formula $E[Z_{t}]=\mu$
+\end_inset
+
+ para todo 
+\begin_inset Formula $t$
+\end_inset
+
+ y que la covarianza 
+\begin_inset Formula $Cov(Z_{t+k},Z_{t})$
+\end_inset
+
+ depende sólo de 
+\begin_inset Formula $k$
+\end_inset
+
+ para todo 
+\begin_inset Formula $t$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition
+Una serie de tiempo estacionaria tiene la característica de oscilar alrededor
+ de la media común de todas las variables aleatorias que componen el proceso
+ estocástico.
+\end_layout
+
+\begin_layout Section
+Modelos
+\end_layout
+
+\begin_layout Subsection
+Procesos de media móvil (
+\begin_inset Formula $MA$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Subsubsection
+Proceso de media móvil de primer orden (
+\begin_inset Formula $MA(1)$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+Sea 
+\begin_inset Formula $\{\varepsilon_{t}\}$
+\end_inset
+
+ ruido blanco y considerar el proceso
+\begin_inset Formula 
+\[
+Y_{t}=\mu+\varepsilon_{t}+\theta\varepsilon_{t-1}
+\]
+
+\end_inset
+
+donde 
+\begin_inset Formula $\mu$
+\end_inset
+
+ y 
+\begin_inset Formula $\theta$
+\end_inset
+
+ podrían ser cualquier constante.
+ Esta serie de tiempo es llamada 
+\emph on
+proceso de media móvil de primer orden
+\emph default
+, denotado por 
+\begin_inset Formula $MA(1)$
+\end_inset
+
+.
+ El término 
+\begin_inset Quotes fld
+\end_inset
+
+media móvil
+\begin_inset Quotes frd
+\end_inset
+
+ proviene del hecho que 
+\begin_inset Formula $Y_{t}$
+\end_inset
+
+ es contruído por una suma ponderada de los dos valores más recientes de
+ 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+El valor esperado de 
+\begin_inset Formula $Y_{t}$
+\end_inset
+
+ está dado por
+\begin_inset Formula 
+\[
+E(Y_{t})=E(\mu+\varepsilon_{t}+\theta\varepsilon_{t-1})=\mu+E(\varepsilon_{t})+\theta E(\varepsilon_{t-1})=\mu.
+\]
+
+\end_inset
+
+Por lo tanto, la constante 
+\begin_inset Formula $\mu$
+\end_inset
+
+ representa la media del proceso.
+\end_layout
+
+\begin_layout Standard
+La varianza de 
+\begin_inset Formula $Y_{t}$
+\end_inset
+
+ es
+\begin_inset Formula 
+\begin{eqnarray*}
+E(Y_{t}-\mu)^{2} & = & E(\varepsilon_{t}+\theta\varepsilon_{t-1})^{2}\\
+ & = & E(\varepsilon_{t}^{2}+2\theta\varepsilon_{t}\varepsilon_{t-1}+\theta^{2}\varepsilon_{t-1}^{2})\\
+ & = & E(\varepsilon_{t}^{2})+2\theta E(\varepsilon_{t}\varepsilon_{t-1})+\theta^{2}E(\varepsilon_{t-1}^{2})\\
+ & = & \sigma^{2}+0+\theta^{2}\sigma^{2}\\
+ & = & (1+\theta^{2})\sigma^{2}.
+\end{eqnarray*}
+
+\end_inset
+
+La primera autocovarianza es
+\begin_inset Formula 
+\begin{eqnarray}
+E(Y_{t}-\mu)(Y_{t-1}-\mu) & = & E\left(\varepsilon_{t}+\theta\varepsilon_{t-1}\right)\left(\varepsilon_{t-1}+\theta\varepsilon_{t-2}\right)\nonumber \\
+ & = & E\left(\varepsilon_{t}\varepsilon_{t-1}+\theta\varepsilon_{t-1}^{2}+\theta\varepsilon_{t}\varepsilon_{t-2}+\theta^{2}\varepsilon_{t-1}\varepsilon_{t-2}\right)\label{eq:firstautocov}\\
+ & = & 0+\theta\sigma^{2}+0+0.\nonumber 
+\end{eqnarray}
+
+\end_inset
+
+Las autocovarianzas más altas son todas cero:
+\begin_inset Formula 
+\begin{equation}
+E(Y_{t}-\mu)(Y_{t-j}-\mu)=E(\varepsilon_{t}+\theta\varepsilon_{t-1})(\varepsilon_{t-j}+\theta\varepsilon_{t-j-1})=0\quad\quad\text{para }j>1.\label{eq:highautocov}
+\end{equation}
+
+\end_inset
+
+Como la media y la autocovarianza no son funciones del tiempo, un proceso
+ 
+\begin_inset Formula $MA(1)$
+\end_inset
+
+ es estacionario con respecto a la covarianza sin importar el valor de 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+La 
+\begin_inset Formula $j-$
+\end_inset
+
+ésima 
+\emph on
+autocorrelación 
+\emph default
+de un proceso de covarianza estacionaria (denotada por 
+\begin_inset Formula $\rho_{j}$
+\end_inset
+
+) es definida como su 
+\begin_inset Formula $j-$
+\end_inset
+
+ésima autocovarianza divida por la varianza:
+\begin_inset Formula 
+\[
+\rho_{j}=\gamma_{j}/\gamma_{0}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+De 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:firstautocov"
+
+\end_inset
+
+ y 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:highautocov"
+
+\end_inset
+
+ la primera autocorrelación para un proceso 
+\begin_inset Formula $MA(1)$
+\end_inset
+
+ está dado por
+\begin_inset Formula 
+\[
+\rho_{1}=\frac{\theta\sigma^{2}}{(1+\theta^{2})\sigma^{2}}=\frac{\theta}{(1+\theta^{2})}.
+\]
+
+\end_inset
+
+Las autocorrelaciones más altas son todas cero.
+\end_layout
+
+\begin_layout Standard
+La autocorrelación 
+\begin_inset Formula $\rho_{j}$
+\end_inset
+
+ puede ser graficada como una función de 
+\begin_inset Formula $j$
+\end_inset
+
+ como en la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "graph:autocorr"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Autocorrelación versus retraso para 
+\begin_inset Formula $Y_{t}=\varepsilon_{t}+0,8\varepsilon_{t-1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "graph:autocorr"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+begin{axis}[xlabel=Retraso,ylabel=Autocorrelación]
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+addplot [color=blue,fill=blue,ycomb,line width=2pt] coordinates {
+\end_layout
+
+\begin_layout Plain Layout
+
+		(0,1)
+\end_layout
+
+\begin_layout Plain Layout
+
+		(1,0.487804878)
+\end_layout
+
+\begin_layout Plain Layout
+
+		};
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+foreach 
+\backslash
+x in {2,...,15}{
+\end_layout
+
+\begin_layout Plain Layout
+
+			
+\backslash
+addplot [color=blue,fill=blue,ycomb,line width=2pt] coordinates{
+\end_layout
+
+\begin_layout Plain Layout
+
+				(
+\backslash
+x,0)
+\end_layout
+
+\begin_layout Plain Layout
+
+			};
+\end_layout
+
+\begin_layout Plain Layout
+
+		} 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+end{axis}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Proceso de media móvil de orden 
+\begin_inset Formula $q$
+\end_inset
+
+ (
+\begin_inset Formula $MA(q)$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+Un proceso de media móvil de orden 
+\begin_inset Formula $q$
+\end_inset
+
+, denotado por 
+\begin_inset Formula $MA(q)$
+\end_inset
+
+, esta caracterizado por
+\begin_inset Formula 
+\begin{equation}
+Y_{t}=\mu+\varepsilon_{t}+\theta_{1}\varepsilon_{t-1}+\theta_{2}\varepsilon_{t-2}+\cdots+\theta_{q}\varepsilon_{t-q},\label{eq:ma_q}
+\end{equation}
+
+\end_inset
+
+donde 
+\begin_inset Formula $\{\varepsilon_{t}\}$
+\end_inset
+
+ es un proceso de ruido blanco y 
+\begin_inset Formula $(\theta_{1},\theta_{2},\ldots,\theta_{q})$
+\end_inset
+
+ son números reales.
+ La media de 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:ma_q"
+
+\end_inset
+
+ es también 
+\begin_inset Formula $\mu$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+E(Y_{t})=\mu+E(\varepsilon_{t})+\theta_{1}E(\varepsilon_{t-1})+\theta_{2}E(\varepsilon_{t-2})+\cdots+\theta_{q}E(\varepsilon_{t-q})=\mu.
+\]
+
+\end_inset
+
+La varianza de un proceso 
+\begin_inset Formula $MA(q)$
+\end_inset
+
+ es:
+\begin_inset Formula 
+\[
+\gamma_{0}=E(Y_{t}-\mu)^{2}=E(\varepsilon_{t}+\theta_{1}\varepsilon_{t-1}+\theta_{2}\varepsilon_{t-2}+\cdots+\theta_{q}\varepsilon_{q}).
+\]
+
+\end_inset
+
+Como los 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+'s no están correlacionados, entonces:
+\begin_inset Formula 
+\[
+\gamma_{0}=\sigma^{2}+\theta_{1}\sigma^{2}+\theta_{2}\sigma^{2}+\cdots+\theta_{q}^{2}\sigma^{2}=(1+\theta_{1}+\theta_{2}+\cdots+\theta_{q})\sigma^{2}.
+\]
+
+\end_inset
+
+Para 
+\begin_inset Formula $j=1,2,\ldots,q$
+\end_inset
+
+,
+\begin_inset Formula 
+\begin{eqnarray*}
+\gamma_{j} & = & E[(\varepsilon_{t}+\theta_{1}\varepsilon_{t-1}+\theta_{2}\varepsilon_{t-2}+\cdots\theta_{q}\varepsilon_{q})\\
+ &  & \times(\varepsilon_{t-j}+\theta_{1}\varepsilon_{t-j-1}+\theta_{2}\varepsilon_{t-j-2}+\cdots+\theta_{q}\varepsilon_{t-j-q})]\\
+ & = & E[\theta_{j}\varepsilon_{t-j}^{2}+\theta_{j+1}\theta_{1}\varepsilon_{t-j-1}^{2}+\theta_{j+2}\theta_{2}\varepsilon_{t-j-2}^{2}+\cdots+\theta_{q}\theta_{q-j}\varepsilon_{t-q}^{2}].
+\end{eqnarray*}
+
+\end_inset
+
+Los términos 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+'s que tienen diferente índice han sido descartados porque su producto tiene
+ esperanza cero, y 
+\begin_inset Formula $\theta_{0}$
+\end_inset
+
+ es la unidad.
+ Para 
+\begin_inset Formula $j>q$
+\end_inset
+
+, no hay 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+'s con índices comunes en la definición de 
+\begin_inset Formula $\gamma_{j}$
+\end_inset
+
+ ya así la esperanza en cero.
+ Así,
+\begin_inset Formula 
+\[
+\gamma_{j}=\begin{cases}
+[\theta_{0}+\theta_{j+1}\theta_{1}+\theta_{j+2}\theta_{2}+\cdots+\theta_{q}\theta_{q-j}]\sigma^{2} & \text{para }j=1,2,\ldots,q\\
+0 & \text{para }j>q
+\end{cases}
+\]
+
+\end_inset
+
+Para cualquier valor de 
+\begin_inset Formula $(\theta_{1},\theta_{2},\ldots,\theta_{q})$
+\end_inset
+
+, el proceso 
+\begin_inset Formula $MA(q)$
+\end_inset
+
+ es de covarianza estacionaria.
+\end_layout
+
+\begin_layout Subsubsection
+Proceso de media móvil de orden infinito (
+\begin_inset Formula $MA(\infty)$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+El 
+\begin_inset Formula $MA(q)$
+\end_inset
+
+ puede ser escrito de la siguiente forma:
+\begin_inset Formula 
+\[
+Y_{t}=\mu+\sum_{j=0}^{q}\theta_{j}\varepsilon_{t-j}
+\]
+
+\end_inset
+
+con 
+\begin_inset Formula $\theta_{0}=1$
+\end_inset
+
+.
+ Considerando el proceso cuando 
+\begin_inset Formula $q\rightarrow+\infty$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+Y_{t}=\mu+\sum_{j=0}^{\infty}\theta_{j}\varepsilon_{t-j}.
+\]
+
+\end_inset
+
+Esto describe un proceso 
+\begin_inset Formula $MA(\infty)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Una forma de asegurarnos que el proceso sea de covarianza estacionaria es
+ considerando
+\begin_inset Formula 
+\begin{equation}
+\sum_{j=0}^{\infty}\theta_{j}^{2}<\infty.\label{eq:squaresummable}
+\end{equation}
+
+\end_inset
+
+Pero también es conveniente trabajar con una condición un poco más fuerte,
+\begin_inset Formula 
+\begin{equation}
+\sum_{j=0}^{\infty}|\theta_{j}|<\infty.\label{eq:absolutesummable}
+\end{equation}
+
+\end_inset
+
+Una secuencia de números 
+\begin_inset Formula $\{\theta_{j}\}_{j=0}^{\infty}$
+\end_inset
+
+ satisfaciendo 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:squaresummable"
+
+\end_inset
+
+ es llamada 
+\emph on
+cuadráticamente sumable
+\emph default
+, mientras que una secuencia satisfaciendo 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:absolutesummable"
+
+\end_inset
+
+ es llamada 
+\emph on
+absolutamente sumable.
+ 
+\emph default
+Absoluta sumabilidad implica sumabilidad cuadrática, pero lo contrario no
+ se cumple
+\end_layout
+
+\begin_layout Standard
+La media y autocovarianzas de un proceso 
+\begin_inset Formula $MA(\infty)$
+\end_inset
+
+ con coeficientes absolutamente sumables se puede calcular con una simple
+ extrapolación de los resultados para un proceso 
+\begin_inset Formula $MA(q)$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{eqnarray*}
+E(Y_{t}) & = & \lim_{T\rightarrow\infty}E(\mu+\theta_{0}\varepsilon_{t}+\theta_{1}\varepsilon_{t-1}+\theta_{2}\varepsilon_{t-2}+\cdots+\theta_{T}\varepsilon_{T})\\
+ & = & \mu\\
+\gamma_{0} & = & E(Y_{t}-\mu)^{2}\\
+ & = & \lim_{T\rightarrow\infty}E(\theta_{0}\varepsilon_{t}+\theta_{1}\varepsilon_{1}+\theta_{2}\varepsilon_{2}+\cdots+\theta_{T}\varepsilon_{T})^{2}\\
+ & = & \lim_{T\rightarrow\infty}(\theta_{0}^{2}+\theta_{1}^{2}+\theta_{2}^{2}+\cdots+\theta_{T}^{2})\sigma^{2}\\
+\gamma_{j} & = & E(Y_{t}-\mu)(Y_{t-j}-\mu)\\
+ & = & \sigma^{2}(\theta_{j}\theta_{0}+\theta_{j+1}\theta_{1}+\theta_{j+2}\theta_{2}+\theta_{j+3}\theta_{3}+\cdots).
+\end{eqnarray*}
+
+\end_inset
+
+Es más, un proceso 
+\begin_inset Formula $MA(\infty)$
+\end_inset
+
+ con coeficiente absolutamente sumables tiene autocovarianzas absolutamente
+ sumables.
+ En efecto,
+\begin_inset Formula 
+\[
+\sum_{j=0}^{\infty}|\gamma_{j}|=\sum_{j=0}^{\infty}\sigma^{2}\left|\sum_{k=0}^{\infty}\theta_{j}\theta_{k}\right|\leq\sigma^{2}\sum_{j=0}^{\infty}\sum_{k=0}^{\infty}|\theta_{j}\theta_{k}|=\sigma^{2}\sum_{j=0}^{\infty}|\theta_{j}|\left(\sum_{k=0}^{\infty}|\theta_{k}|\right)<\infty.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Procesos autoregresivos (
+\begin_inset Formula $AR$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Subsubsection
+Proceso autoregresivo de primer orden (
+\begin_inset Formula $AR(1)$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+Un 
+\emph on
+proceso autoregresivo de primer orden 
+\emph default
+satisface la siguiente ecuación:
+\begin_inset Formula 
+\begin{equation}
+Y_{t}=c+\phi Y_{t-1}+\varepsilon_{t}.\label{eq:ar1}
+\end{equation}
+
+\end_inset
+
+Donde 
+\begin_inset Formula $\{\varepsilon_{t}\}$
+\end_inset
+
+ es un proceso de ruido blanco.
+ Haciendo reemplazos recursivos en 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:ar1"
+
+\end_inset
+
+ obtenemos:
+\begin_inset Formula 
+\[
+Y_{t}=(1+\phi+\phi^{2}+\cdots+\phi^{N-1})\cdot c+\phi^{N}Y_{t-N}+\sum_{j=0}^{N-1}\phi^{j}\varepsilon_{t-j}\quad\text{para }N\in\mathbb{N}.
+\]
+
+\end_inset
+
+Esta expresión se puede comprobar por inducción.
+ El caso que se va a estudiar ahora es cuando 
+\begin_inset Formula $|\phi|<1$
+\end_inset
+
+.
+ Haciendo 
+\begin_inset Formula $N\rightarrow+\infty$
+\end_inset
+
+, este proceso autoregresivo de primer orden se convierte en un proceso
+ de media móvil de orden infinito.
+\begin_inset Formula 
+\[
+Y_{t}=\frac{1}{1-\phi}\cdot c+\sum_{j=0}^{\infty}\phi^{j}\varepsilon_{t-j}.
+\]
+
+\end_inset
+
+Además es absolutamente sumable ya que
+\begin_inset Formula 
+\[
+\sum_{j=0}^{\infty}|\theta_{j}|=\sum_{j=0}^{\infty}|\phi|^{j},
+\]
+
+\end_inset
+
+y la serie de la derecha es convergente.
+\end_layout
+
+\begin_layout Standard
+Tomando esperanzas, vemos que
+\begin_inset Formula 
+\[
+E(Y_{t})=\frac{c}{1-\phi},
+\]
+
+\end_inset
+
+así la media de proceso 
+\begin_inset Formula $AR(1)$
+\end_inset
+
+ estacionario es
+\begin_inset Formula 
+\[
+\mu=\frac{c}{1-\phi}.
+\]
+
+\end_inset
+
+La varianza es
+\begin_inset Formula 
+\begin{eqnarray}
+\gamma_{0} & = & E(Y_{t}-\mu)^{2}\nonumber \\
+ & = & E\left(\sum_{j=0}^{\infty}\phi^{j}\varepsilon_{t-j}\right)^{2}\nonumber \\
+ & = & (1+\phi^{2}+\phi^{4}+\phi^{6}+\cdots)\cdot\sigma^{2}\label{eq:var_ar_1}\\
+ & = & \frac{\sigma^{2}}{1-\phi^{2}},\nonumber 
+\end{eqnarray}
+
+\end_inset
+
+mientras la 
+\begin_inset Formula $j$
+\end_inset
+
+-ésima autocovarianza es
+\begin_inset Formula 
+\begin{eqnarray}
+\gamma_{j} & = & E(Y_{t}-\mu)(Y_{t-j}-\mu)\nonumber \\
+ & = & E\left(\sum_{i=0}^{\infty}\phi^{i}\varepsilon_{t-i}\right)\left(\sum_{i=0}^{\infty}\phi^{i}\varepsilon_{t-j-i}\right)\nonumber \\
+ & = & (\phi^{j}+\phi^{j+2}+\phi^{j+4}+\cdots)\cdot\sigma^{2}\label{eq:autocov_ar_1}\\
+ & = & \phi^{j}(1+\phi^{2}+\phi^{4}+\cdots)\cdot\sigma^{2}\nonumber \\
+ & = & \frac{\phi^{j}}{1-\phi\text{²}}\cdot\sigma^{2}.\nonumber 
+\end{eqnarray}
+
+\end_inset
+
+Se sigue de 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:var_ar_1"
+
+\end_inset
+
+ y 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:autocov_ar_1"
+
+\end_inset
+
+ que la función de autocorrelación,
+\begin_inset Formula 
+\[
+\rho_{j}=\frac{\gamma_{j}}{\gamma_{0}}=\phi^{j},
+\]
+
+\end_inset
+
+sigue una patrón de decaimiento geométrico como se ve en la gráfica 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "graph:ar_1"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Autocorrelación versus retraso para 
+\begin_inset Formula $Y_{t}=0,8Y_{t-1}+\varepsilon_{t}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "graph:ar_1"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+begin{axis}[xlabel=Retraso,ylabel=Autocorrelación]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+foreach 
+\backslash
+x in {0,...,15}{
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+addplot [color=blue,fill=blue,ycomb,line width=2pt] coordinates{
+\end_layout
+
+\begin_layout Plain Layout
+
+			(
+\backslash
+x,0.8^
+\backslash
+x)
+\end_layout
+
+\begin_layout Plain Layout
+
+		};
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+end{axis}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Proceso autoregresivo de orden 
+\begin_inset Formula $p$
+\end_inset
+
+ (
+\begin_inset Formula $AR(p)$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+Una 
+\emph on
+autoregresión de orden 
+\begin_inset Formula $p$
+\end_inset
+
+
+\emph default
+, denotada por 
+\begin_inset Formula $AR(p)$
+\end_inset
+
+, satisface
+\begin_inset Formula 
+\begin{equation}
+Y_{t}=c+\phi_{1}Y_{t-1}+\phi_{2}Y_{t-2}+\cdots+\phi_{p}Y_{t-p}+\varepsilon_{t}.\label{eq:ar_p}
+\end{equation}
+
+\end_inset
+
+En este caso haremos uso de los operadores de retardo 
+\begin_inset Formula $L$
+\end_inset
+
+.
+ Podemos ver que 
+\begin_inset Formula 
+\[
+Y_{t}=c+\phi_{1}LY_{t}+\phi_{2}L^{2}Y_{t}+\cdots+\phi_{p}L^{p}Y_{t}+\varepsilon_{t}
+\]
+
+\end_inset
+
+se puede expresar como
+\begin_inset Formula 
+\begin{eqnarray}
+Y_{t}-\phi_{1}LY_{t}-\phi_{2}L^{2}Y_{t}-\cdots-\phi_{p}L^{p}Y_{t} & = & c+\varepsilon_{t}\label{eq:ar_p_lag}\\
+(1-\phi_{1}L-\phi_{2}L^{2}-\cdots-\phi_{p}L^{p})Y_{t} & = & c+\varepsilon_{t}.\nonumber 
+\end{eqnarray}
+
+\end_inset
+
+Se analizará las raíces del polinomio 
+\begin_inset Formula $1-\phi_{1}z-\phi_{2}z^{2}-\cdots-\phi_{p}z^{p}$
+\end_inset
+
+ para ver una forma de factorizar el polinomio de operadores obtenido en
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:ar_p_lag"
+
+\end_inset
+
+.
+ Como es un polinomio de grado 
+\begin_inset Formula $p$
+\end_inset
+
+ entonces tiene a la más 
+\begin_inset Formula $p$
+\end_inset
+
+ raíces.
+ Sean 
+\begin_inset Formula $\lambda_{1},\lambda_{2},\cdots,\lambda_{p}$
+\end_inset
+
+ estas raíces no necesariamente diferentes.
+ Entonces la factorización de 
+\begin_inset Formula $1-\phi_{1}L-\phi_{2}L^{2}-\cdots-\phi_{p}L^{p}$
+\end_inset
+
+ está dada por 
+\begin_inset Formula $(1-L/\lambda_{1})\cdot(1-L/\lambda_{2})\cdots(1-L/\lambda_{p})$
+\end_inset
+
+.
+ Dejando de lado los casos no favorables, cuando alguna de las raíces es
+ cero o alguna de éstas tiene norma menor que 1, podemos asegurar que las
+ inversas de cada factor existen.
+ En ese caso se puede hacer lo siguiente:
+\begin_inset Formula 
+\begin{eqnarray*}
+Y_{t} & = & (1-\phi_{1}L-\phi_{2}L^{2}-\cdots-\phi_{p}L^{p})^{-1}(c+\varepsilon_{t})\\
+Y_{t} & = & \mu+(1-\phi_{1}L-\phi_{2}L^{2}-\cdots-\phi_{p}L^{p})^{-1}\varepsilon_{t}.
+\end{eqnarray*}
+
+\end_inset
+
+Asumiendo la condición de estacionariedad es satisfecha, una manera de encontrar
+ la media es tomando esperanzas en 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:ar_p"
+
+\end_inset
+
+,
+\begin_inset Formula 
+\begin{eqnarray*}
+E(Y_{t}) & = & E(c+\phi_{1}Y_{t-1}+\phi_{2}Y_{t-2}+\cdots+\phi_{p}Y_{t-p})\\
+\mu & = & c+\phi_{1}\mu+\phi_{2}\mu+\cdots+\phi_{p}\mu.
+\end{eqnarray*}
+
+\end_inset
+
+Luego,
+\begin_inset Formula 
+\begin{equation}
+\mu=\frac{c}{1-\phi_{1}-\phi_{2}-\cdots-\phi_{p}}.\label{eq:ar_p_mean}
+\end{equation}
+
+\end_inset
+
+Usando 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:ar_p_mean"
+
+\end_inset
+
+ en 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:ar_p"
+
+\end_inset
+
+ se tiene:
+\begin_inset Formula 
+\[
+Y_{t}-\mu=\phi_{1}(Y_{t-1}-\mu)+\phi_{2}(Y_{t-2}-\mu)+\cdots+\phi_{p}(Y_{t-p}-\mu)+\varepsilon_{t}.
+\]
+
+\end_inset
+
+Las autocovarianzas se pueden hallar multiplicando ambos lados por 
+\begin_inset Formula $(Y_{t-j}-\mu)$
+\end_inset
+
+ y tomando esperanza,
+\begin_inset Formula 
+\begin{multline*}
+E(Y_{t}-\mu)(Y_{t-j}-\mu)=\phi_{1}E(Y_{t-1}-\mu)(Y_{t-j}-\mu)+\\
+\phi_{2}E(Y_{t-2}-\mu)(Y_{t-j}-\mu)+\cdots+E(Y_{t-p}-\mu)(Y_{t-j}-\mu)+E(\varepsilon_{t})(Y_{t-j}-\mu).
+\end{multline*}
+
+\end_inset
+
+Como resultado se tiene
+\begin_inset Formula 
+\begin{equation}
+\gamma_{j=}\begin{cases}
+\phi_{1}\gamma_{j-1}+\phi_{2}\gamma_{j-2}+\cdots+\phi_{p}\gamma_{j-p} & \text{para }j=1,2,\ldots\\
+\phi_{1}\gamma_{1}+\phi_{2}\gamma_{2}+\cdots+\phi_{p}\gamma_{p}+\sigma^{2} & \text{para }j=0.
+\end{cases}\label{eq:ar_p_autocov}
+\end{equation}
+
+\end_inset
+
+Considerando que puede haber unas dudas con respecto al caso cuando 
+\begin_inset Formula $j=0$
+\end_inset
+
+ se desarrollará su cálculo a continuación:
+\begin_inset Formula 
+\begin{eqnarray*}
+E(Y_{t}-\mu)^{2} & = & \phi_{1}E(Y_{t-1}-\mu)(Y_{t}-\mu)+\phi_{2}E(Y_{t-2}-\mu)(Y_{t}-\mu)+\\
+ &  & \cdots+\phi_{p}E(Y_{t-p}-\mu)(Y_{t}-\mu)+E(\varepsilon_{t})(Y_{t}-\mu)\\
+\gamma_{0} & = & \phi_{1}\gamma_{1}+\phi_{2}\gamma_{2}+\cdots+\phi_{p}\gamma_{p}+\\
+ &  & E(\varepsilon_{t})(\phi_{1}Y_{t-1}+\phi_{2}Y_{t-2}+\cdots+\phi_{p}Y_{t-p}+\varepsilon_{t})\\
+\gamma_{0} & = & \phi_{1}\gamma_{1}+\phi_{2}\gamma_{2}+\cdots+\phi_{p}\gamma_{p}+\phi_{1}E(\varepsilon_{t}Y_{t-1})+\phi_{2}E(\varepsilon_{t}Y_{t-2})+\\
+ &  & \cdots+\phi_{p}E(\varepsilon_{t}Y_{t-p})+E(\varepsilon_{t}^{2}).
+\end{eqnarray*}
+
+\end_inset
+
+Como 
+\begin_inset Formula $\varepsilon_{t}$
+\end_inset
+
+ no está correlacionado con 
+\begin_inset Formula $Y_{t-j}$
+\end_inset
+
+ para 
+\begin_inset Formula $j=1,2,\ldots,p$
+\end_inset
+
+, entonces
+\begin_inset Formula 
+\[
+\gamma_{0}=\phi_{1}\gamma_{1}+\phi_{2}\gamma_{2}+\cdots+\phi_{p}\gamma_{p}+\sigma^{2}.
+\]
+
+\end_inset
+
+Por otro lado, tomando en cuenta que 
+\begin_inset Formula $\gamma_{-j}=\gamma_{j}$
+\end_inset
+
+ entonces la ecuación 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:ar_p_autocov"
+
+\end_inset
+
+ genera un sistema de ecuaciones lineales donde se puede resolver 
+\begin_inset Formula $\gamma_{0},\gamma_{1},\ldots,\gamma_{p}$
+\end_inset
+
+ bajo las condiciones adecuadas.
+ Explicitamente este sistema es de la siguiente forma:
+\begin_inset Formula 
+\[
+\left[\begin{array}{ccccccc}
+1 & -\phi_{1} & -\phi_{2} & -\phi_{3} & \cdots & -\phi_{p-1} & -\phi_{p}\\
+-\phi_{1} & (1-\phi_{2}) & -\phi_{3} & -\phi_{4} & \cdots & -\phi_{p} & 0\\
+-\phi_{2} & -\phi_{1} & (1-\phi_{3}) & -\phi_{4} & \cdots & 0 & 0\\
+\vdots & \vdots & \vdots & \vdots &  & \vdots & \vdots\\
+-\phi_{p} & -\phi_{p-1} & -\phi_{p-2} & -\phi_{p-3} & \cdots & -\phi_{1} & 1
+\end{array}\right]\left[\begin{array}{c}
+\gamma_{0}\\
+\gamma_{1}\\
+\gamma_{2}\\
+\vdots\\
+\gamma_{p}
+\end{array}\right]=\left[\begin{array}{c}
+\sigma^{2}\\
+0\\
+0\\
+\vdots\\
+0
+\end{array}\right].
+\]
+
+\end_inset
+
+Las 
+\begin_inset Quotes eld
+\end_inset
+
+condiciones adecuadas
+\begin_inset Quotes erd
+\end_inset
+
+ que se habló anteriormente se refire a que la matriz debe tener determinante
+ no nulo para que tenga solución única.
+\end_layout
+
+\begin_layout Subsection
+Procesos mixtos autoregresivos y de media móvil (ARMA)
+\end_layout
+
+\begin_layout Standard
+Un proceso 
+\begin_inset Formula $ARMA(p,q)$
+\end_inset
+
+ incluye términos de los procesos de media móvil y los procesos autoregresivos:
+\begin_inset Formula 
+\begin{multline}
+Y_{t}=c+\phi_{1}Y_{t-1}+\phi_{2}Y_{t-2}+\cdots+\phi_{p}Y_{t-p}+\varepsilon_{t}+\theta_{1}\varepsilon_{t-1}+\theta_{2}\varepsilon_{t-2}+\cdots+\theta_{q}\varepsilon_{t-q.}\label{eq:arma_pq}
+\end{multline}
+
+\end_inset
+
+Este ecuación también se puede expresar en término del operador de retraso
+ 
+\begin_inset Formula $L$
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+(1-\phi_{1}L-\phi_{2}L^{2}-\cdots-\phi_{p}L^{p})Y_{t}=c+(1+\theta_{1}L+\theta_{2}L^{2}+\cdots+\theta_{q}L^{q})\varepsilon_{t}.
+\]
+
+\end_inset
+
+Considerando que las raíces del polinomio 
+\begin_inset Formula $1-\phi_{1}z-\phi_{2}z^{2}-\cdots-\phi_{p}z^{p}$
+\end_inset
+
+ son todas de norma mayor a 1, entonces el operador polinómico 
+\begin_inset Formula $1-\phi_{1}L-\phi_{2}L^{2}-\cdots-\phi_{p}L^{p}$
+\end_inset
+
+ puede pasar a 
+\begin_inset Quotes eld
+\end_inset
+
+dividir
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Esto es,
+\begin_inset Formula 
+\[
+Y_{t}=\mu+\psi(L)\varepsilon_{t},
+\]
+
+\end_inset
+
+donde
+\begin_inset Formula 
+\begin{eqnarray*}
+\psi(L) & = & \frac{1+\theta_{1}L+\theta_{2}L^{2}+\cdots+\theta_{q}L^{q}}{1-\phi_{1}L-\phi_{2}L^{2}-\cdots-\phi_{p}L^{p}}\\
+\sum_{j=0}^{\infty}|\psi_{j}| & < & \infty\\
+\mu & = & \frac{c}{1-\phi_{1}-\phi_{2}-\cdots-\phi_{p}}.
+\end{eqnarray*}
+
+\end_inset
+
+La condición 
+\begin_inset Formula $\sum_{j=0}^{\infty}|\psi_{j}|<\infty$
+\end_inset
+
+ asegura que el proceso es de covarianza estacionario lo que permite el
+ cálculo directo de 
+\begin_inset Formula $\mu$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Otra forma de expresar 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:arma_pq"
+
+\end_inset
+
+ es de la siguiente forma:
+\begin_inset Formula 
+\begin{multline*}
+Y_{t}-\mu=\phi_{1}(Y_{t-1}-\mu)+\phi_{2}(Y_{t-2}-\mu)+\cdots+\phi_{p}(Y_{t-p}-\mu)+\\
+\varepsilon_{t}+\theta_{1}\varepsilon_{t-1}+\theta_{2}\varepsilon_{t-2}+\cdots+\theta_{q}\varepsilon_{t-q}.
+\end{multline*}
+
+\end_inset
+
+Esta forma es adecuada para calcular las autocovarianzas multiplicando por
+ 
+\begin_inset Formula $Y_{t-j}-\mu$
+\end_inset
+
+ a ambos lados y tomando la esperanza.
+\end_layout
+
+\end_body
+\end_document
