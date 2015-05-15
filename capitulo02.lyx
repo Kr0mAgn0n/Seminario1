@@ -87,57 +87,6 @@ En este capítulo estudiaremos las series de tiempo estacionarias y los tipos
 \end_layout
 
 \begin_layout Section
-Definición y propiedades
-\end_layout
-
-\begin_layout Definition
-Sea 
-\begin_inset Formula $z_{t}$
-\end_inset
-
- una serie de tiempo.
- A 
-\begin_inset Formula $z_{t}$
-\end_inset
-
- se le llama 
-\emph on
-serie de tiempo estacionaria 
-\emph default
-si el proceso estocástico 
-\begin_inset Formula $Z_{t}$
-\end_inset
-
- que la genera cumple que 
-\begin_inset Formula $E[Z_{t}]=\mu$
-\end_inset
-
- para todo 
-\begin_inset Formula $t$
-\end_inset
-
- y que la covarianza 
-\begin_inset Formula $Cov(Z_{t+k},Z_{t})$
-\end_inset
-
- depende sólo de 
-\begin_inset Formula $k$
-\end_inset
-
- para todo 
-\begin_inset Formula $t$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Definition
-Una serie de tiempo estacionaria tiene la característica de oscilar alrededor
- de la media común de todas las variables aleatorias que componen el proceso
- estocástico.
-\end_layout
-
-\begin_layout Section
 Modelos
 \end_layout
 
@@ -1403,6 +1352,51 @@ Esta forma es adecuada para calcular las autocovarianzas multiplicando por
 \end_inset
 
  a ambos lados y tomando la esperanza.
+ Para 
+\begin_inset Formula $j>q$
+\end_inset
+
+, la ecuaciones resultantes toman la forma
+\begin_inset Formula 
+\begin{equation}
+\gamma_{j}=\phi_{1}\gamma_{j-1}+\phi_{2}\gamma_{2}+\cdots+\phi_{p}\gamma_{p}\qquad\text{para }j=q+1,q+2,\ldots.\label{eq:arma_autocov}
+\end{equation}
+
+\end_inset
+
+Notar que 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:arma_autocov"
+
+\end_inset
+
+ no se cumple cuando 
+\begin_inset Formula $j\leq q$
+\end_inset
+
+ debido a la correlación entre 
+\begin_inset Formula $\theta_{j}\varepsilon_{t-j}$
+\end_inset
+
+ y 
+\begin_inset Formula $Y_{t-j}$
+\end_inset
+
+.
+ Por la tanto, un proceso 
+\begin_inset Formula $ARMA(p,q)$
+\end_inset
+
+ tendrá autocovarianzas más complicadas para los retrasos desde 
+\begin_inset Formula $1$
+\end_inset
+
+ hasta 
+\begin_inset Formula $q$
+\end_inset
+
+.
 \end_layout
 
 \end_body

@@ -2,7 +2,7 @@
 \lyxformat 474
 \begin_document
 \begin_header
-\textclass amsbook
+\textclass book
 \use_default_options true
 \begin_modules
 theorems-ams
@@ -29,7 +29,7 @@ figs-within-sections
 \output_sync 0
 \bibtex_command default
 \index_command default
-\paperfontsize default
+\paperfontsize 12
 \spacing single
 \use_hyperref false
 \papersize default
@@ -78,8 +78,9 @@ figs-within-sections
 Series de Tiempo No Estacionarias
 \end_layout
 
-\begin_layout Section
-Definición y Propiedades
+\begin_layout Standard
+En este capítulo estudiaremos la series de tiempo no estacionarias y los
+ modelos que existen en este tipo de series para describir un fenómeno.
 \end_layout
 
 \begin_layout Section
