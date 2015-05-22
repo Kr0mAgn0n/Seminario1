@@ -222,9 +222,9 @@ reference "eq:arima_diff"
 
  para tener
 \begin_inset Formula 
-\[
-z_{t}=S^{d}w_{t}
-\]
+\begin{equation}
+z_{t}=S^{d}w_{t}\label{eq:arima_infsum}
+\end{equation}
 
 \end_inset
 
@@ -267,6 +267,356 @@ y así sucesivamente para un orden
 \end_inset
 
  más alto.
+\end_layout
+
+\begin_layout Standard
+Técnicamente, el operador de suma infinita 
+\begin_inset Formula $S=(1-L)^{-1}$
+\end_inset
+
+ en 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:arima_infsum"
+
+\end_inset
+
+ no puede ser usada para definir un proceso 
+\begin_inset Formula $ARIMA$
+\end_inset
+
+ no estacionario, puesto que la suma infinita puede no converger.
+ En su lugar se puede considerar el operador de suma finita 
+\begin_inset Formula $S_{m}$
+\end_inset
+
+ donde 
+\begin_inset Formula $m$
+\end_inset
+
+ es entero positivo que esta dado por
+\begin_inset Formula 
+\[
+S_{m}=(1+L+L^{2}+\cdots+L^{m-1})\equiv\frac{1-L^{m}}{1-L}.
+\]
+
+\end_inset
+
+Similarmente, el operador de suma finita doble puede ser definido así
+\begin_inset Formula 
+\begin{eqnarray*}
+S_{m}^{(2)} & = & \sum_{j=0}^{m-1}\sum_{i=j}^{m-1}L^{i}=(1+2L+3L^{2}+\cdots+mL^{m-1})\\
+ & \equiv & \frac{1-L^{m}-mL^{m}(1-L)}{(1-L)^{2}}
+\end{eqnarray*}
+
+\end_inset
+
+porque 
+\begin_inset Formula $(1-L)S_{m}^{(2)}=S_{m}-mL^{m}$
+\end_inset
+
+, y así sucesivamente.
+ Entonces la relación entre un proceso 
+\begin_inset Formula $ARMA$
+\end_inset
+
+ integrado 
+\begin_inset Formula $z_{t}$
+\end_inset
+
+ con 
+\begin_inset Formula $d=1$
+\end_inset
+
+ y el correspondiente proceso 
+\begin_inset Formula $ARMA$
+\end_inset
+
+ 
+\begin_inset Formula $w_{t}=(1-L)z_{t}$
+\end_inset
+
+, en términos de valores previos a algún inicio 
+\begin_inset Formula $k<t$
+\end_inset
+
+, puede ser expresado como
+\begin_inset Formula 
+\[
+z_{t}=\frac{S_{t-k}}{1-L^{t-k}}w_{t}=\frac{1}{1-L^{t-k}}(w_{t}+w_{t-1}+\cdots+w_{k+1})
+\]
+
+\end_inset
+
+así 
+\begin_inset Formula $z_{t}=w_{t}+w_{t-1}+\cdots+w_{k+1}+z_{k}$
+\end_inset
+
+ que es una suma finita de un proceso estacionario 
+\begin_inset Formula $w$
+\end_inset
+
+ más un valor inicial del proceso 
+\begin_inset Formula $z$
+\end_inset
+
+ en el tiempo 
+\begin_inset Formula $k$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Si el operador autorregresivo 
+\begin_inset Formula $\phi(L)$
+\end_inset
+
+ es de orden 
+\begin_inset Formula $p$
+\end_inset
+
+, la 
+\begin_inset Formula $d$
+\end_inset
+
+-ésima diferencia en tomada, y el operador de media móvil 
+\begin_inset Formula $\theta(L)$
+\end_inset
+
+ es de orden 
+\begin_inset Formula $q$
+\end_inset
+
+, decimos que tenemos un modelo 
+\begin_inset Formula $ARIMA$
+\end_inset
+
+ de orden 
+\begin_inset Formula $(p,d,q)$
+\end_inset
+
+, o simplemente un proceso 
+\begin_inset Formula $ARIMA(p,d,q)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Forma general del modelo autorregresivo integrado de media móvil
+\end_layout
+
+\begin_layout Standard
+Algunas veces es útil considerar una extensión sutil del modelo 
+\begin_inset Formula $ARIMA$
+\end_inset
+
+ adicionando una constante 
+\begin_inset Formula $\theta_{0}$
+\end_inset
+
+.
+ Así, una forma bastante general del modelo que se usará para describir
+ series de tiempo es el proceso autorregrivo integrado de media móvil
+\begin_inset Formula 
+\begin{equation}
+\varphi(L)z_{t}=\phi(L)(1-L)^{d}z_{t}=\theta_{0}+\theta(L)\varepsilon_{t}\label{eq:arima_general}
+\end{equation}
+
+\end_inset
+
+donde
+\begin_inset Formula 
+\begin{eqnarray*}
+\phi(L) & = & 1-\phi_{1}L-\phi_{2}L^{2}-\cdots-\phi_{p}L^{p}\\
+\theta(L) & = & 1+\theta_{1}L-+\theta L^{2}+\cdots-+\theta L^{q}.
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La razón de esta forma general es el deseo de incluir una tendencia determinísti
+ca en vez de la tendencia estocástica descrita en el modelo previo.
+ Se puede agregar una tendencia polinomial determinística de grado 
+\begin_inset Formula $d$
+\end_inset
+
+ permitiendo a 
+\begin_inset Formula $\theta_{0}$
+\end_inset
+
+ ser diferente de cero.
+ Por ejemplo, cuando 
+\begin_inset Formula $d=1$
+\end_inset
+
+, podemos usar el modelo con 
+\begin_inset Formula $\theta_{0}\neq0$
+\end_inset
+
+ para representar una posible tendencia determinística lineal en la presencia
+ de ruido no estacionario.
+ 
+\end_layout
+
+\begin_layout Standard
+En 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:arima_general"
+
+\end_inset
+
+, permitir que 
+\begin_inset Formula $\theta_{0}$
+\end_inset
+
+ ser distinto de cero es equivalente a permitir que
+\begin_inset Formula 
+\[
+E(w_{t})=E(\nabla^{d}z_{t})=\mu_{w}=\frac{\theta_{0}}{1-\phi_{1}-\phi_{2}-\cdots-\phi_{p}}
+\]
+
+\end_inset
+
+no sea cero.
+ Una manera alternativa de expresar el modelo general 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:arima_general"
+
+\end_inset
+
+ es en la forma de procesos estacionario 
+\begin_inset Formula $ARMA$
+\end_inset
+
+ invertible con 
+\begin_inset Formula $\tilde{w}_{t}=w_{t}-\mu_{w}$
+\end_inset
+
+.
+ Esto es, 
+\begin_inset Formula 
+\[
+\phi(L)\tilde{w}_{t}=\theta(L)\varepsilon_{t}.
+\]
+
+\end_inset
+
+Notar que, cuando 
+\begin_inset Formula $d=1$
+\end_inset
+
+, 
+\begin_inset Formula $\nabla z_{t}=w_{t}=\tilde{w}_{t}+\mu_{w}$
+\end_inset
+
+ implica que 
+\begin_inset Formula $z_{t}=\tilde{z}_{t}+\mu_{w}t+\alpha$
+\end_inset
+
+, donde 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ es la constante de intersección y el proceso 
+\begin_inset Formula $\tilde{z}_{t}$
+\end_inset
+
+ es tal que 
+\begin_inset Formula $\nabla\tilde{z}_{t}=\tilde{w}_{t}$
+\end_inset
+
+, que tiene media cero.
+ Así 
+\begin_inset Formula $\theta_{0}\neq0$
+\end_inset
+
+ permite una tendencia lineal determinística en 
+\begin_inset Formula $z_{t}$
+\end_inset
+
+ con pendiente 
+\begin_inset Formula $\mu_{w}=\theta_{0}/(1-\phi_{1}-\phi_{2}-\cdots-\phi_{p})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Transformaciones no lineal de 
+\begin_inset Formula $z$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Una ampliación considerable del rango de aplicación útil del modelo 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:arima_general"
+
+\end_inset
+
+ es alcanzado si posibilitamos una transformación.
+ Así, podemos sustituir 
+\begin_inset Formula $z_{t}^{(\lambda)}$
+\end_inset
+
+ por 
+\begin_inset Formula $z_{t}$
+\end_inset
+
+ en 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:arima_general"
+
+\end_inset
+
+, donde 
+\begin_inset Formula $z_{t}^{(\lambda)}$
+\end_inset
+
+ es una transformación no lineal de 
+\begin_inset Formula $z_{t}$
+\end_inset
+
+ envolviendo uno o más parámetros 
+\begin_inset Formula $\lambda.$
+\end_inset
+
+ Una transformación adecuada de 
+\begin_inset Formula $z_{t}$
+\end_inset
+
+ puede ser sugerida dado algún caso, o en algunos otros, puede ser estimada
+ de los datos.
+ Por ejemplo, si estuviéramos interesados en la ventanas recientes de una
+ mercancía recién introducida al mercado, encontraremos que el volumen de
+ ventas estuvo incrementandose a una tasa muy alta y que el porcentaje de
+ fluctuación mostró estabilidad no estacionaria (homogeneidad) en vez fluctuació
+n absoluta.
+ Esto ayudaría el analisis de logaritmo de las ventas porque 
+\begin_inset Formula 
+\[
+\nabla\ln(z_{t})=\ln\left(\frac{z_{t}}{z_{t-1}}\right)=\ln\left(1+\frac{\nabla z_{t}}{z_{t-1}}\right)\approx\frac{\nabla z_{t}}{z_{t-1}}
+\]
+
+\end_inset
+
+donde 
+\begin_inset Formula $\nabla z_{t}/z_{t-1}$
+\end_inset
+
+ es el cambio relativo o de porcentaje y la aproximación es válidad cuando
+ estos cambios no son grandes.
 \end_layout
 
 \end_body
