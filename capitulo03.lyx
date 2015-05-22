@@ -78,17 +78,195 @@ figs-within-sections
 Series de Tiempo No Estacionarias
 \end_layout
 
-\begin_layout Standard
-En este capítulo estudiaremos la series de tiempo no estacionarias y los
- modelos que existen en este tipo de series para describir un fenómeno.
-\end_layout
-
 \begin_layout Section
 Modelos
 \end_layout
 
 \begin_layout Subsection
-Raíces unitarias
+Procesos autorregresivos integrados de media móvil (
+\begin_inset Formula $ARIMA$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Subsubsection
+Procesos autorregresivos integrados de media móvil que exhiben homogeneidad
+\end_layout
+
+\begin_layout Standard
+Hemos visto que los procesos 
+\begin_inset Formula $ARMA$
+\end_inset
+
+ son estacionarios si las raíces de 
+\begin_inset Formula $\phi(L)=0$
+\end_inset
+
+ (donde 
+\begin_inset Formula $\phi(L)=1-\phi_{1}L-\phi_{2}L^{2}-\cdots-\phi_{p}L^{p}$
+\end_inset
+
+) están fuera del círculo unitario, y exhibe comportamiento explosivo no
+ estacionario si las raíces están dentro del círculo unitario.
+ El caso que queda abierto es cuando las raíces de 
+\begin_inset Formula $\phi(L)=0$
+\end_inset
+
+ están en la circunferencia unitaria.
+ Con esto los modelos resultantes son de gran valor en representar series
+ de tiempo no estacionarias homogéneas.
+\end_layout
+
+\begin_layout Standard
+Consideremos el modelo
+\begin_inset Formula 
+\begin{equation}
+\varphi(L)\tilde{z}_{t}=\theta(L)\varepsilon_{t}\label{eq:arima_1}
+\end{equation}
+
+\end_inset
+
+donde 
+\begin_inset Formula $\tilde{z}_{t}=z_{t}-\mu$
+\end_inset
+
+ y 
+\begin_inset Formula $\varphi(L)$
+\end_inset
+
+ es un operador autorregresivo no estacionario tal que 
+\begin_inset Formula $d$
+\end_inset
+
+ de las raíces de 
+\begin_inset Formula $\varphi(L)=0$
+\end_inset
+
+ son la unidad y las restantes están fuera del círculo unitario.
+ Entonces podemos expresar el modelo 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:arima_1"
+
+\end_inset
+
+ en la forma
+\begin_inset Formula 
+\[
+\varphi(L)\tilde{z}_{t}=\phi(L)(1-L)^{d}\tilde{z}_{t}=\theta(L)\varepsilon_{t}
+\]
+
+\end_inset
+
+donde 
+\begin_inset Formula $\phi(L)$
+\end_inset
+
+ es un operador autorregresivo estacionario.
+ Como 
+\begin_inset Formula $\nabla^{d}\tilde{z}_{t}=\nabla^{d}z_{t}$
+\end_inset
+
+, para 
+\begin_inset Formula $d\geq1$
+\end_inset
+
+, donde 
+\begin_inset Formula $\nabla=1-L$
+\end_inset
+
+ es el operador de diferenciación, podemos escribir el modelo como
+\begin_inset Formula 
+\[
+\phi(L)\nabla^{d}z_{t}=\theta(L)\varepsilon_{t}.
+\]
+
+\end_inset
+
+Equivalentemente, el proceso es defino por dos ecuaciones
+\begin_inset Formula 
+\[
+\phi(L)w_{t}=\theta(L)\varepsilon_{t}
+\]
+
+\end_inset
+
+y
+\begin_inset Formula 
+\begin{equation}
+w_{t}=\nabla^{d}z_{t}.\label{eq:arima_diff}
+\end{equation}
+
+\end_inset
+
+Así, se ve que el modelo corresponde a asumir que la 
+\begin_inset Formula $d$
+\end_inset
+
+-ésima diferencia de la serie puede ser representada como un proceso 
+\begin_inset Formula $ARMA$
+\end_inset
+
+ invertible y estacionario.
+ Una manera alternativa de ver el proceso para 
+\begin_inset Formula $d\geq1$
+\end_inset
+
+ resulta de invertir 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:arima_diff"
+
+\end_inset
+
+ para tener
+\begin_inset Formula 
+\[
+z_{t}=S^{d}w_{t}
+\]
+
+\end_inset
+
+donde 
+\begin_inset Formula $S$
+\end_inset
+
+ es un operador de suma infinita definido por 
+\begin_inset Formula 
+\begin{eqnarray*}
+Sx_{t}=\sum_{h=-\infty}^{t}x_{h} & = & (1+L+L^{2}+\cdots)x_{t}\\
+ & = & (1-L)^{-1}x_{t}=\nabla^{-1}x_{t}.
+\end{eqnarray*}
+
+\end_inset
+
+Así, 
+\begin_inset Formula 
+\[
+S=(1-L)^{-1}=\nabla^{-1}.
+\]
+
+\end_inset
+
+El operador 
+\begin_inset Formula $S^{2}$
+\end_inset
+
+ es definido similarmente como 
+\begin_inset Formula 
+\begin{eqnarray*}
+S^{2}x_{t} & = & Sx_{t}+Sx_{t-1}+Sx_{t-2}+\cdots\\
+ & = & \sum_{i=-\infty}^{t}\sum_{h=-\infty}^{i}x_{h}=(1+2L+3L^{2}+\cdots)x_{t}
+\end{eqnarray*}
+
+\end_inset
+
+y así sucesivamente para un orden 
+\begin_inset Formula $d$
+\end_inset
+
+ más alto.
 \end_layout
 
 \end_body
