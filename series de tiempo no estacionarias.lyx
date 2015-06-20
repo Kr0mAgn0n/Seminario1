@@ -2,7 +2,7 @@
 \lyxformat 474
 \begin_document
 \begin_header
-\textclass book
+\textclass amsbook
 \use_default_options true
 \begin_modules
 theorems-ams
@@ -79,10 +79,6 @@ Series de Tiempo No Estacionarias
 \end_layout
 
 \begin_layout Section
-Modelos
-\end_layout
-
-\begin_layout Subsection
 Procesos autorregresivos integrados de media móvil (
 \begin_inset Formula $ARIMA$
 \end_inset
@@ -90,7 +86,7 @@ Procesos autorregresivos integrados de media móvil (
 )
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Procesos autorregresivos integrados de media móvil que exhiben homogeneidad
 \end_layout
 
@@ -403,7 +399,7 @@ Si el operador autorregresivo
 .
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Forma general del modelo autorregresivo integrado de media móvil
 \end_layout
 
@@ -548,7 +544,7 @@ Notar que, cuando
 .
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Transformaciones no lineales de 
 \begin_inset Formula $z$
 \end_inset
