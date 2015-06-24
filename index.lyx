@@ -62,13 +62,13 @@ figs-within-sections
 \shortcut idx
 \color #008000
 \end_index
-\secnumdepth 3
-\tocdepth 3
+\secnumdepth 2
+\tocdepth 2
 \paragraph_separation indent
 \paragraph_indentation default
 \quotes_language english
 \papercolumns 1
-\papersides 1
+\papersides 2
 \paperpagestyle default
 \tracking_changes false
 \output_changes false

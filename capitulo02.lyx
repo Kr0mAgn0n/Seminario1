@@ -91,16 +91,12 @@ Modelos
 \end_layout
 
 \begin_layout Subsection
-Procesos de media móvil (
-\begin_inset Formula $MA$
-\end_inset
-
-)
+Procesos de media móvil (MA)
 \end_layout
 
 \begin_layout Subsubsection
-Proceso de media móvil de primer orden (
-\begin_inset Formula $MA(1)$
+Proceso de media móvil de primer orden (MA
+\begin_inset Formula $(1)$
 \end_inset
 
 )
@@ -440,8 +436,8 @@ Proceso de media móvil de orden
 \begin_inset Formula $q$
 \end_inset
 
- (
-\begin_inset Formula $MA(q)$
+ (MA
+\begin_inset Formula $(q)$
 \end_inset
 
 )
@@ -576,8 +572,8 @@ Para cualquier valor de
 \end_layout
 
 \begin_layout Subsubsection
-Proceso de media móvil de orden infinito (
-\begin_inset Formula $MA(\infty)$
+Proceso de media móvil de orden infinito (MA
+\begin_inset Formula $(\infty)$
 \end_inset
 
 )
@@ -711,11 +707,7 @@ Es más, un proceso
 \end_layout
 
 \begin_layout Subsection
-Procesos autoregresivos (
-\begin_inset Formula $AR$
-\end_inset
-
-)
+Procesos autoregresivos (AR)
 \end_layout
 
 \begin_layout Subsubsection
