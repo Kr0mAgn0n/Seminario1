@@ -1,0 +1,349 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass amsbook
+\use_default_options true
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\language spanish-mexico
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language french
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Estimación de modelos
+\end_layout
+
+\begin_layout Standard
+En el capítulo anterior se dieron técnicas para identificar los posibles
+ modelos que se adecuan a la serie de tiempo que queremos estudiar.
+ En este capítulo se hará evaluaciones a los candidatos que aparecieron
+ en el capítulo anterior para elegir la mejor opción
+\end_layout
+
+\begin_layout Section
+Función de probabilidad
+\end_layout
+
+\begin_layout Standard
+Sea 
+\begin_inset Formula $\boldsymbol{z}=(z_{1},z_{2},\cdots,z_{n})$
+\end_inset
+
+ la serie de tiempo a estudiar.
+ De esta serie de tiempo deriva la serie diferenciada 
+\begin_inset Formula $\boldsymbol{w}$
+\end_inset
+
+ que representan a los datos diferenciados 
+\begin_inset Formula $d$
+\end_inset
+
+ veces de acuerdo al modelo a analizar.
+ Para ver que modelo se adecua mejor a esta serie de tiempo utilizaremos
+ una función de probabilidad conjunta de los valores de 
+\begin_inset Formula $\boldsymbol{\varepsilon}=(\varepsilon_{1},\varepsilon_{2},\cdots,\varepsilon_{n})$
+\end_inset
+
+.
+ Para deducir el modelo supongamos que los valores 
+\begin_inset Formula $\varepsilon_{t}$
+\end_inset
+
+ siguen una distribución normal 
+\begin_inset Formula 
+\[
+p(\varepsilon_{t})=\frac{1}{\sqrt{2\pi\sigma_{\varepsilon}^{2}}}\exp\left(-\frac{(\varepsilon_{t}-\mu_{\varepsilon})^{2}}{2\sigma_{\varepsilon}^{2}}\right).
+\]
+
+\end_inset
+
+donde 
+\begin_inset Formula $\mu_{\varepsilon}=0$
+\end_inset
+
+, porque 
+\begin_inset Formula $\varepsilon_{t}$
+\end_inset
+
+ es un ruido blanco.
+ Entonces la probabilidad conjunta de 
+\begin_inset Formula $\boldsymbol{\varepsilon}$
+\end_inset
+
+, tomando en cuenta que los 
+\begin_inset Formula $\varepsilon_{t}$
+\end_inset
+
+ no están correlacionados, es 
+\begin_inset Formula 
+\[
+p(\boldsymbol{\varepsilon})=\left(\frac{1}{\sqrt{2\pi\sigma_{\varepsilon}^{2}}}\right)^{n}\exp\left(-\frac{\sum_{t=1}^{n}\varepsilon_{t}^{2}}{2\sigma_{\varepsilon}^{2}}\right).
+\]
+
+\end_inset
+
+Tomando en cuenta que 
+\begin_inset Formula $\varepsilon_{t}=\tilde{w}_{t}-\phi\tilde{w}_{t-1}-\phi_{2}\tilde{w}_{t-2}-\cdots-\phi_{p}\tilde{w}_{t-p}+\theta_{1}\varepsilon_{t-1}+\theta_{2}\varepsilon_{t-2}+\cdots+\theta_{q}\varepsilon_{t-q}$
+\end_inset
+
+ entonces esta función de probabilidad depende de 
+\begin_inset Formula $\boldsymbol{\tilde{w}}$
+\end_inset
+
+, 
+\begin_inset Formula $\boldsymbol{\phi}$
+\end_inset
+
+ y 
+\begin_inset Formula $\boldsymbol{\theta}$
+\end_inset
+
+ y se puede definir como 
+\begin_inset Formula 
+\[
+L(\boldsymbol{\tilde{w}},\boldsymbol{\phi},\boldsymbol{\theta})=\left(\frac{1}{\sqrt{2\pi\sigma_{\varepsilon_{t}}^{2}}}\right)^{n}\exp\left(-\frac{\sum_{t=1}^{n}\varepsilon_{t}^{2}}{2\sigma_{\varepsilon_{t}}^{2}}\right),
+\]
+
+\end_inset
+
+donde 
+\begin_inset Formula $\boldsymbol{\tilde{w}}=(w_{i}-\mu_{w})_{i=1}^{n}$
+\end_inset
+
+, 
+\begin_inset Formula $\boldsymbol{\phi}=(\phi_{i})_{i=1}^{p}$
+\end_inset
+
+ y 
+\begin_inset Formula $\boldsymbol{\theta}=(\theta_{i})_{i=1}^{q}$
+\end_inset
+
+.
+ El objetivo es hallar el modelo con probabilidad más alta que se ajuste
+ a los datos.
+\end_layout
+
+\begin_layout Standard
+Para simplificar el estudio de la función de probabilidad se toma el logaritmo
+ natural a esta función y da como resultado 
+\begin_inset Formula 
+\[
+l(\boldsymbol{\tilde{w}},\boldsymbol{\phi},\boldsymbol{\theta})=-\frac{n}{2}\ln\left(2\pi\sigma_{\varepsilon}^{2}\right)-\frac{\sum_{t=1}^{n}\varepsilon_{t}^{2}}{2\sigma_{\varepsilon}^{2}}.
+\]
+
+\end_inset
+
+Para lograr la mayor probabilidad se necesita tener la menor suma de los
+ cuadrados de 
+\begin_inset Formula $\varepsilon_{t}$
+\end_inset
+
+ entonces se buscará calcular de manera óptima esta cantidad.
+\end_layout
+
+\begin_layout Section
+Cálculo de la menor suma de cuadrados
+\end_layout
+
+\begin_layout Standard
+En el cálculo de la menor suma de cuadrados de los 
+\begin_inset Formula $\varepsilon_{t}$
+\end_inset
+
+ enfrentamos un problema.
+ El problema es que no podemos calcular los valores 
+\begin_inset Formula $(\varepsilon_{t})_{t=1}^{n}$
+\end_inset
+
+ dada la ecuación 
+\begin_inset Formula $\varepsilon_{t}=\tilde{w}_{t}-\phi_{1}\tilde{w}_{t-1}-\phi_{2}\tilde{w}_{t-2}-\cdots-\phi_{p}\tilde{w}_{t-p}+\theta_{1}\varepsilon_{t-1}+\theta_{2}\varepsilon_{t-2}+\cdots+\theta_{q}\varepsilon_{t-q}$
+\end_inset
+
+ porque necesitaríamos los valores 
+\begin_inset Formula $\tilde{w}_{1-p},\tilde{w}_{2-p},\cdots,\tilde{w}_{0}$
+\end_inset
+
+ y 
+\begin_inset Formula $\varepsilon_{1-q},\varepsilon_{2-q},\cdots,\varepsilon_{0}$
+\end_inset
+
+.
+ Para resolver el problema se tiene que modificar un poco la función de
+ probabilidad para que se pueda calcular la menor suma de cuadrados.
+ La función de probabilidad será 
+\begin_inset Formula 
+\[
+l(\boldsymbol{\tilde{w}},\boldsymbol{\phi},\boldsymbol{\theta})=-\frac{n}{2}\ln\left(2\pi\sigma_{\varepsilon}^{2}\right)-\frac{\sum_{t=1}^{n}\left(E(\varepsilon_{t}|\boldsymbol{\tilde{w}},\boldsymbol{\phi},\boldsymbol{\theta})\right)^{2}}{2\sigma_{\varepsilon}^{2}}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ahora el problema se reduce a calcular 
+\begin_inset Formula $E(\varepsilon_{t}|\boldsymbol{\tilde{w}},\boldsymbol{\phi},\boldsymbol{\theta})$
+\end_inset
+
+.
+ Vemos que 
+\begin_inset Formula 
+\begin{eqnarray*}
+\varepsilon_{t} & = & \tilde{w}_{t}-\phi_{1}\tilde{w}_{t-1}-\phi_{2}\tilde{w}_{t-2}-\cdots-\phi_{p}\tilde{w}_{t-p}+\theta_{1}\varepsilon_{t-1}+\\
+ &  & \theta_{2}\varepsilon_{t-2}+\cdots+\theta_{q}\varepsilon_{t-q}\\
+E(\varepsilon_{t}|\boldsymbol{\tilde{w}},\boldsymbol{\phi},\boldsymbol{\theta}) & = & E(\tilde{w}_{t}|\boldsymbol{\tilde{w}},\boldsymbol{\phi},\boldsymbol{\theta})-\sum_{i=1}^{p}E(\phi_{i}\tilde{w}_{t-i}|\boldsymbol{\tilde{w}},\boldsymbol{\phi},\boldsymbol{\theta})+\sum_{i=1}^{q}E(\theta_{i}\varepsilon_{t-i}|\boldsymbol{\tilde{w}},\boldsymbol{\phi},\boldsymbol{\theta}),
+\end{eqnarray*}
+
+\end_inset
+
+donde 
+\begin_inset Formula 
+\begin{eqnarray*}
+E(\phi_{i}\tilde{w}_{t}|\boldsymbol{\tilde{w}},\boldsymbol{\phi},\boldsymbol{\theta}) & = & \begin{cases}
+\phi_{i}\tilde{w}_{t}, & t\geq1\\
+0, & t<1
+\end{cases}
+\end{eqnarray*}
+
+\end_inset
+
+porque 
+\begin_inset Formula $\tilde{w}_{t}$
+\end_inset
+
+ no está correlacionado con 
+\begin_inset Formula $\boldsymbol{\tilde{w}}$
+\end_inset
+
+ y de alli se ve que 
+\begin_inset Formula $E(\tilde{w}_{t}|\boldsymbol{\tilde{w}},\boldsymbol{\phi},\boldsymbol{\theta})=E(\tilde{w}_{t})=0$
+\end_inset
+
+.
+ Por ejemplo, con esto se puede calcular 
+\begin_inset Formula $E(\varepsilon_{0}|\boldsymbol{\tilde{w}},\boldsymbol{\phi},\boldsymbol{\theta})$
+\end_inset
+
+ para un modelo 
+\begin_inset Formula $ARMA(1,1)$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{eqnarray*}
+\varepsilon_{0} & = & \tilde{w}_{0}-\phi_{1}\tilde{w}_{-1}+\theta_{1}\varepsilon_{-1}\\
+E(\varepsilon_{0}|\boldsymbol{\tilde{w}},\boldsymbol{\phi},\boldsymbol{\theta}) & = & E(\tilde{w}_{0}|\boldsymbol{\tilde{w}},\boldsymbol{\phi},\boldsymbol{\theta})-\phi_{1}E(\tilde{w}_{-1}|\boldsymbol{\tilde{w}},\boldsymbol{\phi},\boldsymbol{\theta})+\theta_{1}E(\varepsilon_{-1}|\boldsymbol{\tilde{w}},\boldsymbol{\phi},\boldsymbol{\theta})\\
+E(\varepsilon_{0}|\boldsymbol{\tilde{w}},\boldsymbol{\phi},\boldsymbol{\theta}) & = & 0+0+\theta_{1}E(\tilde{w}_{-1}-\phi_{1}\tilde{w}_{-2}+\theta_{1}\varepsilon_{-2}|\boldsymbol{\tilde{w}},\boldsymbol{\phi},\boldsymbol{\theta})\\
+ & = & \theta_{1}^{2}E(\varepsilon_{-2}|\boldsymbol{\tilde{w}},\boldsymbol{\phi},\boldsymbol{\theta})\\
+ & \vdots\\
+ & = & 0.
+\end{eqnarray*}
+
+\end_inset
+
+A partir de ese valor se puede calcular 
+\begin_inset Formula $\varepsilon_{1},\varepsilon_{2},\cdots,\varepsilon_{n}$
+\end_inset
+
+ y puede calcular la suma de cuadrados de los 
+\begin_inset Formula $\varepsilon_{t}$
+\end_inset
+
+, pero aún faltaría calcular 
+\begin_inset Formula $\sigma_{\varepsilon}^{2}$
+\end_inset
+
+.
+ Este valor se puede aproximar calculando 
+\begin_inset Formula 
+\[
+\hat{\sigma}_{\varepsilon}^{2}=\frac{\sum_{i=1}^{n}(\varepsilon_{i}-\overline{\varepsilon})^{2}}{n}
+\]
+
+\end_inset
+
+donde 
+\begin_inset Formula $\overline{\varepsilon}$
+\end_inset
+
+ es la media de los 
+\begin_inset Formula $\varepsilon_{1},\varepsilon_{2},\cdots,\varepsilon_{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Con todos estos valores calculados se puede hallar el valor de la función
+ de probabilidad de los candidatos para comparar y después elegir la mejor
+ opción.
+\end_layout
+
+\end_body
+\end_document

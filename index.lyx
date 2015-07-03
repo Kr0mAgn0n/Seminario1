@@ -2,7 +2,7 @@
 \lyxformat 474
 \begin_document
 \begin_header
-\textclass book
+\textclass amsbook
 \begin_preamble
 \usepackage{pgfplots}
 
@@ -35,7 +35,7 @@ figs-within-sections
 \bibtex_command default
 \index_command default
 \paperfontsize 12
-\spacing single
+\spacing double
 \use_hyperref false
 \papersize default
 \use_geometry false
@@ -66,7 +66,7 @@ figs-within-sections
 \tocdepth 2
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language english
+\quotes_language french
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
@@ -101,7 +101,7 @@ begin{center}
 
 
 \backslash
-includegraphics{img/uni}
+includegraphics[scale=0.5]{img/uni}
 \backslash
 
 \backslash
@@ -321,7 +321,7 @@ LatexCommand tableofcontents
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input
-filename "capitulo01.lyx"
+filename "series de tiempo estacionarias.lyx"
 
 \end_inset
 
@@ -331,7 +331,7 @@ filename "capitulo01.lyx"
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input
-filename "capitulo02.lyx"
+filename "series de tiempo no estacionarias.lyx"
 
 \end_inset
 
@@ -341,7 +341,7 @@ filename "capitulo02.lyx"
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input
-filename "capitulo03.lyx"
+filename "identificacion de modelos.lyx"
 
 \end_inset
 

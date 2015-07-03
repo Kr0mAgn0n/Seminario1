@@ -1,0 +1,194 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass amsbook
+\use_default_options true
+\begin_removed_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_removed_modules
+\maintain_unincluded_children false
+\language spanish-mexico
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language french
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Identificación de Modelos
+\end_layout
+
+\begin_layout Section
+Procedimiento para la identificación de modelos
+\end_layout
+
+\begin_layout Standard
+Para identificar un modelo de una serie de tiempo primero hay que evaluar
+ su grado de diferenciación, es decir, el valor de 
+\begin_inset Formula $d$
+\end_inset
+
+.
+ Para eso vamos a hacer uso de la función de autocorrelación.
+ 
+\end_layout
+
+\begin_layout Standard
+Tomemos en consideración un modelo 
+\begin_inset Formula $ARMA(p,q)$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\phi(L)\tilde{z}_{t}=\theta(L)\varepsilon_{t}
+\]
+
+\end_inset
+
+donde 
+\begin_inset Formula $\tilde{z}_{t}=z_{t}-\mu$
+\end_inset
+
+ y 
+\begin_inset Formula $\mu$
+\end_inset
+
+ es la media del proceso.
+ Calculando la función de autocorrelación tenemos:
+\begin_inset Formula 
+\begin{eqnarray*}
+\phi(L)\tilde{z}_{t}\tilde{z}_{t-k} & = & \theta(L)\varepsilon_{t}\tilde{z}_{t-k}\\
+\phi(L)E(\tilde{z}_{t}\tilde{z}_{t-k}) & = & \theta(L)E(\varepsilon_{t}\tilde{z}_{t-k}).
+\end{eqnarray*}
+
+\end_inset
+
+Tomando en cuenta los valores de 
+\begin_inset Formula $k>q$
+\end_inset
+
+ tenemos:
+\begin_inset Formula 
+\[
+\phi(L)\rho_{k}=0.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Considerando que el modelo es estacionario entonces las raíces de 
+\begin_inset Formula $\phi(L)$
+\end_inset
+
+ están fuera del círculo unitario y con eso 
+\begin_inset Formula $\rho_{k}=0$
+\end_inset
+
+ para 
+\begin_inset Formula $k>q$
+\end_inset
+
+ porque 
+\begin_inset Formula $\phi(L)$
+\end_inset
+
+ sería invertible.
+ Esto un factor a considerar cuando se quiera estimar 
+\begin_inset Formula $d$
+\end_inset
+
+ porque cuando se analiza una serie de tiempo cuya función de autocorrelación
+ no se anula rápidamente (
+\begin_inset Formula $k<3$
+\end_inset
+
+) entonces se puede sospechar que la serie no es estacionaria.
+ Si este es el caso, entonces se procedera a diferenciar la serie de tiempo
+ sucesivamente hasta lograr una serie cuya función de autocorrelación se
+ anule rápidamente.
+ Con esto se puede estimar el valor de 
+\begin_inset Formula $d$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Cuando se estime 
+\begin_inset Formula $d$
+\end_inset
+
+ el siguiente paso es estimar un modelo para la serie diferenciada, que
+ como se sabe, es una serie que debería obedecer un modelo 
+\begin_inset Formula $ARMA$
+\end_inset
+
+.
+\end_layout
+
+\end_body
+\end_document

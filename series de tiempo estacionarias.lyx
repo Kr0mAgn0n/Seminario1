@@ -2,7 +2,7 @@
 \lyxformat 474
 \begin_document
 \begin_header
-\textclass book
+\textclass amsbook
 \begin_preamble
 \usepackage{pgfplots}
 \end_preamble
@@ -87,16 +87,12 @@ En este capítulo estudiaremos las series de tiempo estacionarias y los tipos
 \end_layout
 
 \begin_layout Section
-Modelos
-\end_layout
-
-\begin_layout Subsection
 Procesos de media móvil (MA)
 \end_layout
 
-\begin_layout Subsubsection
-Proceso de media móvil de primer orden (MA
-\begin_inset Formula $(1)$
+\begin_layout Subsection
+Proceso de media móvil de primer orden (
+\begin_inset Formula $MA(1)$
 \end_inset
 
 )
@@ -431,7 +427,7 @@ end{tikzpicture}
 
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Proceso de media móvil de orden 
 \begin_inset Formula $q$
 \end_inset
@@ -571,12 +567,12 @@ Para cualquier valor de
  es de covarianza estacionaria.
 \end_layout
 
-\begin_layout Subsubsection
-Proceso de media móvil de orden infinito (MA
-\begin_inset Formula $(\infty)$
+\begin_layout Subsection
+Procesos de media móvil de orden infinito 
+\begin_inset Formula $(MA(\infty))$
 \end_inset
 
-)
+
 \end_layout
 
 \begin_layout Standard
@@ -706,11 +702,15 @@ Es más, un proceso
 
 \end_layout
 
-\begin_layout Subsection
-Procesos autoregresivos (AR)
+\begin_layout Section
+Procesos autoregresivos (
+\begin_inset Formula $AR$
+\end_inset
+
+)
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Proceso autoregresivo de primer orden (
 \begin_inset Formula $AR(1)$
 \end_inset
@@ -979,7 +979,7 @@ end{tikzpicture}
 
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Proceso autoregresivo de orden 
 \begin_inset Formula $p$
 \end_inset
@@ -1244,8 +1244,12 @@ condiciones adecuadas
  no nulo para que tenga solución única.
 \end_layout
 
-\begin_layout Subsection
-Procesos mixtos autoregresivos y de media móvil (ARMA)
+\begin_layout Section
+Procesos mixtos autoregresivos y de media móvil (
+\begin_inset Formula $ARMA$
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Standard
