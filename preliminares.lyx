@@ -78,5 +78,135 @@ figs-within-sections
 Preliminares
 \end_layout
 
+\begin_layout Standard
+En este capítulo se expondrá las ideas preliminares de las cuales depende
+ los capítulos posteriores.
+\end_layout
+
+\begin_layout Section
+Definiciones preliminares
+\end_layout
+
+\begin_layout Standard
+En esta sección se expondrá las definiciones más importantes usadas en esta
+ monografía y se omitirá las definiciones básicas.
+ Estas últimas definiciones se pueden consultar en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "cinlar"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Un 
+\emph on
+proceso estocástico
+\emph default
+ es una colección de variables aleatorias 
+\begin_inset Formula $\{X_{t}:t\in T\}$
+\end_inset
+
+ definidas en el mismo espacio de probabilidad.
+ Si 
+\begin_inset Formula $T$
+\end_inset
+
+ es un conjunto numerable entonce se dice que el proceso estocástico es
+ 
+\emph on
+discreto
+\emph default
+, en caso contrario, es 
+\emph on
+continuo.
+\end_layout
+
+\begin_layout Standard
+Una 
+\emph on
+serie de tiempo 
+\begin_inset Formula $\{x_{t}:t\in T\}$
+\end_inset
+
+
+\emph default
+ es la ocurrencia de un proceso estocástico, es decir, por ejemplo, en el
+ caso discreto, sería un vector con los valores que pueden tomar las variables
+ aleatorias 
+\begin_inset Formula $X_{t}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Una serie de tiempo se dice que es 
+\emph on
+estacionaria
+\emph default
+ de 2do orden si el proceso estocástico que la genera cumple las siguientes
+ propiedades:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $E(X_{t})=\mu=$
+\end_inset
+
+constante,
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $Var(X_{t})=\sigma^{2}=$
+\end_inset
+
+constante.
+\end_layout
+
+\begin_layout Standard
+Una serie de tiempo se dice 
+\emph on
+no estacionaria
+\emph default
+ si no cumple con las condiciones de estacionariedad.
+\end_layout
+
+\begin_layout Standard
+Una proceso 
+\emph on
+ruido blanco
+\emph default
+ 
+\begin_inset Formula $(\varepsilon_{t})_{t=1}^{n}$
+\end_inset
+
+ es un proceso estocástico que cumple los siguiente:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $E(\varepsilon_{t})=0$
+\end_inset
+
+ para todo 
+\begin_inset Formula $t$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $Var(\varepsilon_{t})=\sigma_{\varepsilon}^{2}=$
+\end_inset
+
+constante.
+\end_layout
+
+\begin_layout Standard
+Generalmente los procesos de ruido blanco se les considera que siguen una
+ distribución normal.
+\end_layout
+
 \end_body
 \end_document

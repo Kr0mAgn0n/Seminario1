@@ -5,6 +5,7 @@
 \textclass beamer
 \begin_preamble
 \usepackage{ragged2e}
+
 \justifying
 \end_preamble
 \use_default_options true
@@ -415,10 +416,6 @@ E[\tilde{Z}_{t}\tilde{Z}_{t-k}] & = & \phi_{1}E[\tilde{Z}_{t-1}\tilde{Z}_{t-k}]+
 
 \end_layout
 
-\begin_layout Separator
-
-\end_layout
-
 \begin_layout BeginFrame
 
 \end_layout
@@ -449,10 +446,6 @@ reference "eq:ar_p_cov"
 \end_layout
 
 \begin_layout EndFrame
-
-\end_layout
-
-\begin_layout Separator
 
 \end_layout
 
@@ -499,10 +492,6 @@ Por el Teorema Fundamental de Álgebra el polinomio
 \end_layout
 
 \begin_layout EndFrame
-
-\end_layout
-
-\begin_layout Separator
 
 \end_layout
 
@@ -637,9 +626,9 @@ media móvil de orden
 \emph default
 si cumple lo siguiente:
 \begin_inset Formula 
-\[
-Z_{t}=c+\varepsilon_{t}+\theta_{1}\varepsilon_{t-1}+\cdots+\theta_{q}\varepsilon_{t-q}
-\]
+\begin{equation}
+Z_{t}=c+\varepsilon_{t}+\theta_{1}\varepsilon_{t-1}+\cdots+\theta_{q}\varepsilon_{t-q}\label{eq:ma_q}
+\end{equation}
 
 \end_inset
 
@@ -685,8 +674,23 @@ Igual que en la sección anterior generemos un proceso de media cero para
  
 \begin_inset Formula 
 \[
-\tilde{Z}_{t}=Z_{t}-c.
+\tilde{Z}_{t}=Z_{t}-c
 \]
+
+\end_inset
+
+con lo que 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:ma_q"
+
+\end_inset
+
+ tendría la forma 
+\begin_inset Formula 
+\begin{equation}
+\tilde{Z}=\varepsilon_{t}+\theta_{1}\varepsilon_{t-1}+\cdots+\theta_{q}\varepsilon_{t-q}.\label{eq:ma_q_simple}
+\end{equation}
 
 \end_inset
 
@@ -712,10 +716,6 @@ E[\tilde{Z}_{t}\tilde{Z}_{t}] & = & E[\varepsilon_{t}\tilde{Z}_{t}]+\theta_{1}E[
 \end_layout
 
 \begin_layout EndFrame
-
-\end_layout
-
-\begin_layout Separator
 
 \end_layout
 
@@ -754,10 +754,6 @@ Ver que cuando
 
 \end_layout
 
-\begin_layout Separator
-
-\end_layout
-
 \begin_layout BeginFrame
 
 \end_layout
@@ -788,6 +784,544 @@ Ver que cuando
 
  entonces 
 \begin_inset Formula $\rho_{k}=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+
+\end_layout
+
+\begin_layout Remark
+De igual forma que en la sección anterior, 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:ma_q_simple"
+
+\end_inset
+
+ se puede expresar en función del operador lag 
+\begin_inset Formula 
+\begin{eqnarray*}
+\tilde{Z} & = & \varepsilon_{t}+\theta_{1}L\varepsilon_{t}+\cdots+\theta_{q}L^{q}\varepsilon_{t}\\
+\tilde{Z} & = & (1+\theta_{1}L+\cdots+\theta_{q}L^{q})\varepsilon_{t}.
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Modelos autorregresivos y de media móvil de orden 
+\begin_inset Formula $(p,q)$
+\end_inset
+
+ (
+\begin_inset Formula $ARMA(p,q)$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout BeginFrame
+
+\end_layout
+
+\begin_layout Definition
+Un proceso 
+\begin_inset Formula $\{Z_{t}\}$
+\end_inset
+
+ sigue un modelo 
+\begin_inset Formula $ARMA(p,q)$
+\end_inset
+
+ si 
+\begin_inset Formula 
+\begin{eqnarray}
+Z_{t} & = & c+\phi_{1}Z_{t-1}+\phi_{2}Z_{t-2}+\cdots+\phi_{p}Z_{t-p}+\label{eq:arma_pq}\\
+ &  & \varepsilon_{t}+\theta_{1}\varepsilon_{t-1}+\theta_{2}\varepsilon_{t-2}+\cdots+\theta_{q}\varepsilon_{t-q.}\nonumber 
+\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+La media del proceso 
+\begin_inset Formula $ARMA(p,q)$
+\end_inset
+
+ está dada por 
+\begin_inset Formula 
+\begin{eqnarray*}
+E[Z_{t}] & = & E[c]+\phi_{1}E[Z_{t-1}]+\phi_{2}E[Z_{t-2}]+\cdots+\phi_{p}E[Z_{t-p}]+\\
+ &  & E[\varepsilon_{t}]+\theta_{1}E[\varepsilon_{t-1}]+\theta_{2}E[\varepsilon_{t-2}]+\cdots+\theta_{q}E[\varepsilon_{t-q}]\\
+\mu & = & c+\phi_{1}\mu+\phi_{2}\mu+\cdots+\phi_{p}\mu\\
+\mu & = & \frac{c}{1+\phi_{1}+\cdots+\phi_{p}}.
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+
+\end_layout
+
+\begin_layout Remark
+Expresando 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:arma_pq"
+
+\end_inset
+
+ como un proceso de medida cero tenemos: 
+\begin_inset Formula 
+\begin{eqnarray}
+\tilde{Z}_{t} & = & \phi_{1}\tilde{Z}_{t-1}+\phi_{2}\tilde{Z}_{t-2}+\cdots+\phi_{p}\tilde{Z}_{t-p}+\nonumber \\
+ &  & \varepsilon_{t}+\theta_{1}\varepsilon_{t-1}+\theta_{2}\varepsilon_{t-2}+\cdots+\theta_{q}\varepsilon_{t-q}.\label{eq:arma_pq_sim}
+\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Remark
+La varianza del proceso está dada por 
+\begin_inset Formula 
+\begin{eqnarray*}
+E[\tilde{Z}_{t}\tilde{Z}_{t}] & = & \phi_{1}E[\tilde{Z}_{t-1}\tilde{Z}_{t}]+\phi_{2}E[\tilde{Z}_{t-2}\tilde{Z}_{t}]+\cdots+\\
+ &  & \phi_{p}E[\tilde{Z}_{t-p}\tilde{Z}_{t}]+E[\varepsilon_{t}\tilde{Z}_{t}]+\theta_{1}E[\varepsilon_{t-1}\tilde{Z}_{t-1}]+\\
+ &  & \theta_{2}E[\varepsilon_{t-2}\tilde{Z}_{t}]+\cdots+\theta_{q}E[\varepsilon_{t-q}\tilde{Z}_{t}]\\
+\sigma_{\tilde{Z}}^{2} & = & \phi_{1}\gamma_{1}+\phi_{2}\gamma_{2}+\cdots+\phi_{p}\gamma_{p}+\\
+ &  & \sigma_{\varepsilon}^{2}+\theta_{1}\sigma_{\varepsilon}^{2}+\theta_{2}\sigma_{\varepsilon}^{2}+\cdots+\theta_{q}\sigma_{\varepsilon}^{2}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+
+\end_layout
+
+\begin_layout Remark
+Las covarianzas están dadas por 
+\begin_inset Formula 
+\begin{eqnarray*}
+E[\tilde{Z}_{t}\tilde{Z}_{t-k}] & = & \phi_{1}E[\tilde{Z}_{t-1}\tilde{Z}_{t-k}]+\phi_{2}E[\tilde{Z}_{t-2}\tilde{Z}_{t-k}]+\cdots+\\
+ &  & \phi_{p}E[\tilde{Z}_{t-p}\tilde{Z}_{t-k}]+E[\varepsilon_{t}\tilde{Z}_{t-k}]+\theta_{1}E[\varepsilon_{t-1}\tilde{Z}_{t-k}]+\\
+ &  & \theta_{2}E[\varepsilon_{t-2}\tilde{Z}_{t-k}]+\cdots+\theta_{q}E[\varepsilon_{t-q}\tilde{Z}_{t-k}].
+\end{eqnarray*}
+
+\end_inset
+
+Si 
+\begin_inset Formula $k>q$
+\end_inset
+
+ entonces 
+\begin_inset Formula 
+\[
+\gamma_{k}=\phi_{1}\gamma_{k-1}+\phi_{2}\gamma_{k-2}+\cdots+\phi_{p}\gamma_{k-p}
+\]
+
+\end_inset
+
+y si 
+\begin_inset Formula $k\leq q$
+\end_inset
+
+ entonces 
+\begin_inset Formula 
+\[
+\gamma_{k}=\phi_{1}\gamma_{k-1}+\phi_{2}\gamma_{k-2}+\cdots+\phi_{p}\gamma_{k-p}+\theta_{k}\sigma_{\varepsilon}^{2}+\theta_{k+1}\sigma_{\varepsilon}^{2}+\cdots+\theta_{q}\sigma_{\varepsilon}^{2}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+
+\end_layout
+
+\begin_layout Remark
+Las autocorrelaciones están dadas por 
+\begin_inset Formula 
+\begin{eqnarray*}
+\rho_{k} & = & (\phi_{1}\gamma_{k-1}+\phi_{2}\gamma_{k-2}+\cdots+\phi_{p}\gamma_{p})/(\phi_{1}\gamma_{1}+\\
+ &  & \phi_{2}\gamma_{2}+\cdots+\phi_{p}\gamma_{p}+\sigma_{\varepsilon}^{2}+\theta_{1}\sigma_{\varepsilon}^{2}+\theta_{2}\sigma_{\varepsilon}^{2}+\cdots+\theta_{q}\sigma_{\varepsilon}^{2})
+\end{eqnarray*}
+
+\end_inset
+
+si 
+\begin_inset Formula $k>q$
+\end_inset
+
+ y 
+\begin_inset Formula 
+\begin{eqnarray*}
+\rho_{k} & = & (\phi_{1}\gamma_{k-1}+\phi_{2}\gamma_{k-2}+\cdots+\phi_{p}\gamma_{k-p}+\theta_{k}\sigma_{\varepsilon}^{2}+\\
+ &  & \theta_{k+1}\sigma_{\varepsilon}^{2}+\cdots+\theta_{q}\sigma_{\varepsilon}^{2})/(\phi_{1}\gamma_{1}+\phi_{2}\gamma_{2}+\cdots+\\
+ &  & \phi_{p}\gamma_{p}+\sigma_{\varepsilon}^{2}+\theta_{1}\sigma_{\varepsilon}^{2}+\theta_{2}\sigma_{\varepsilon}^{2}+\cdots+\theta_{q}\sigma_{\varepsilon}^{2})
+\end{eqnarray*}
+
+\end_inset
+
+si 
+\begin_inset Formula $k\leq q$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+
+\end_layout
+
+\begin_layout Remark
+Podemos expresar 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:arma_pq_sim"
+
+\end_inset
+
+ en función del operador lag: 
+\begin_inset Formula 
+\begin{eqnarray*}
+\tilde{Z}_{t} & = & \phi_{1}L\tilde{Z}_{t}+\phi_{2}L^{2}\tilde{Z}_{t}+\cdots+\phi_{p}L^{p}\tilde{Z}_{t}+\\
+ &  & \varepsilon_{t}+\theta_{1}L\varepsilon_{t}+L^{2}\varepsilon_{t}+\cdots+\theta_{q}L^{q}\varepsilon_{t}
+\end{eqnarray*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+(1-\phi_{1}L-\phi_{2}L^{2}-\cdots-\phi_{p}L^{p})\tilde{Z}_{t}=(1+\theta_{1}L+\theta_{2}L^{2}+\cdots+\theta_{q}L^{q})\varepsilon_{t}.
+\]
+
+\end_inset
+
+Para asegurar valores de 
+\begin_inset Formula $\tilde{Z}_{t}$
+\end_inset
+
+ entonces el operador 
+\begin_inset Formula $1-\phi_{1}L-\phi_{2}L^{2}-\cdots-\phi_{p}L^{p}$
+\end_inset
+
+ tiene que ser invertible.
+ Este caso se comentó en diapositivas anteriores.
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Part
+Series de Tiempo No Estacionarias
+\end_layout
+
+\begin_layout BeginFrame
+
+\end_layout
+
+\begin_layout Definition
+El 
+\emph on
+operador de diferenciación 
+\emph default
+está definido como 
+\begin_inset Formula 
+\[
+D=(1-L).
+\]
+
+\end_inset
+
+Es decir, genera el proceso de la diferencias.
+ Ejemplo: 
+\begin_inset Formula 
+\[
+D\{Z_{t}\}=\{(1-L)Z_{t}\}=\{Z_{t+1}-Z_{t}\}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Definition
+El proceso 
+\begin_inset Formula $\{Z_{t}\}$
+\end_inset
+
+ sigue un modelo 
+\begin_inset Formula $ARIMA(p,d,q)$
+\end_inset
+
+ si el proceso diferenciado 
+\begin_inset Formula $d$
+\end_inset
+
+ veces sigue un proceso 
+\begin_inset Formula $ARMA(p,q)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+
+\end_layout
+
+\begin_layout Definition
+Sea 
+\begin_inset Formula $\{Z_{t}\}$
+\end_inset
+
+ un proceso.
+ El 
+\emph on
+operador suma 
+\emph default
+está definido como El 
+\begin_inset Formula 
+\[
+S\{Z_{t}\}=\left\{ \sum_{i=1}^{t}(Z_{i}-Z_{i-1})\right\} 
+\]
+
+\end_inset
+
+donde 
+\begin_inset Formula $Z_{0}$
+\end_inset
+
+ es una constante.
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+
+\end_layout
+
+\begin_layout Example
+Analicemos un proceso 
+\begin_inset Formula $\{Z_{t}\}$
+\end_inset
+
+.
+ Este proceso está descrito por la ecuación 
+\begin_inset Formula 
+\[
+Z_{t}=c+dt+\phi_{1}Z_{t-1}+\varepsilon_{t}+\theta_{1}\varepsilon_{t-1}.
+\]
+
+\end_inset
+
+Vemos que el proceso tiene una tendencia lineal.
+ Para quitar la tendencia aplicaremos el operador diferenciación una vez.
+ Notar que 
+\begin_inset Formula 
+\[
+Z_{t-1}=c+d(t-1)+\phi_{1}Z_{t-2}+\varepsilon_{t-1}+\theta_{1}\varepsilon_{t-2}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+
+\end_layout
+
+\begin_layout Standard
+Restando miembro a miembro 
+\begin_inset Formula 
+\begin{eqnarray*}
+Z_{t}-Z_{t-1} & = & d+\phi_{1}(Z_{t-1}-Z_{t-2})+(\varepsilon_{t}-\varepsilon_{t-1})+\\
+ &  & \theta_{1}(\varepsilon_{t-1}-\varepsilon_{t-2})\\
+DZ_{t} & = & d+\phi_{1}DZ_{t-1}+D\varepsilon_{t}+\theta_{1}D\varepsilon_{t-1}\\
+Y_{t} & = & d+\phi_{1}Y_{t-1}+a_{t}+\theta_{1}a_{t-1}.
+\end{eqnarray*}
+
+\end_inset
+
+Hemos generado un proceso que parece seguir un modelo estudiado anteriormene
+ (
+\begin_inset Formula $ARMA(1,1)$
+\end_inset
+
+) pero faltaría ver que 
+\begin_inset Formula $a_{t}$
+\end_inset
+
+ es un ruido blanco.
+ En efecto, 
+\begin_inset Formula 
+\begin{eqnarray*}
+E[a_{t}] & = & 0\\
+E[a_{t}^{2}] & = & E[\varepsilon_{t}^{2}+2\varepsilon_{t}\varepsilon_{t-1}+\varepsilon_{t-1}^{2}]\\
+E[a_{t}^{2}] & = & 2\sigma_{\varepsilon}^{2}.
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Part
+Función de Autocorrelación y de Autocorrelación Parcial
+\end_layout
+
+\begin_layout BeginFrame
+
+\end_layout
+
+\begin_layout Definition
+La función de autocorrelación 
+\begin_inset Formula $acf:\mathbb{N}\cup\{0\}\rightarrow\mathbb{R}$
+\end_inset
+
+ está definida de la siguiente manera: 
+\begin_inset Formula 
+\[
+acf(k)=\rho_{k}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Definition
+La función de autocorrelación parcial 
+\begin_inset Formula $pacf:\mathbb{N}\cup\{0\}\rightarrow\mathbb{R}$
+\end_inset
+
+ está definida de la siguiente manera: 
+\begin_inset Formula 
+\[
+pacf(k)=\phi_{kk}
+\]
+
+\end_inset
+
+donde 
+\begin_inset Formula 
+\[
+\rho_{j}=\phi_{k1}\rho_{j-1}+\phi_{k2}\rho_{j-2}+\cdots+\phi_{kk}\rho_{j-k}.
+\]
+
+\end_inset
+
+Donde 
+\begin_inset Formula $j=1,2,\cdots,k$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+
+\end_layout
+
+\begin_layout Remark
+Notar que la función de autocorrelación parcial genera un sistema de ecuaciónes
+ 
+\begin_inset Formula 
+\[
+\left[\begin{array}{ccccc}
+1 & \rho_{1} & \rho_{2} & \cdots & \rho_{k-1}\\
+\rho_{1} & 1 & \rho_{1} & \cdots & \rho_{k-2}\\
+\vdots & \vdots & \vdots & \cdots & \vdots\\
+\rho_{k-1} & \rho_{k-2} & \rho_{k-3} & \cdots & 1
+\end{array}\right]\left[\begin{array}{c}
+\phi_{k1}\\
+\phi_{k2}\\
+\vdots\\
+\phi_{kk}
+\end{array}\right]=\left[\begin{array}{c}
+\rho_{1}\\
+\rho_{2}\\
+\vdots\\
+\rho_{k}
+\end{array}\right]
+\]
+
+\end_inset
+
+que nos permite calcular 
+\begin_inset Formula $\phi_{kk}$
 \end_inset
 
 .

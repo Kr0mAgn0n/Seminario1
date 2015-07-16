@@ -78,6 +78,36 @@ figs-within-sections
 Identificación de Modelos
 \end_layout
 
+\begin_layout Standard
+Este capítulo de identificación de modelos describe los métodos para obtener
+ una idea inicial de los valores 
+\begin_inset Formula $p$
+\end_inset
+
+, 
+\begin_inset Formula $d$
+\end_inset
+
+ y 
+\begin_inset Formula $q$
+\end_inset
+
+ en los modelos 
+\begin_inset Formula $ARIMA$
+\end_inset
+
+.
+ Los métodos son cualitativos que se basan la observación de la función
+ de autocorrelación y la función de autocorrelación parcial.
+ 
+\end_layout
+
+\begin_layout Standard
+Estos métodos van a dar unos canditatos para elegir el modelo adecuado a
+ la serie de tiempo que luego va a ser corroborados de la forma que se va
+ describir en los capítulo siguiente.
+\end_layout
+
 \begin_layout Section
 Procedimiento para la identificación de modelos
 \end_layout
@@ -119,7 +149,7 @@ donde
 \begin_inset Formula 
 \begin{eqnarray*}
 \phi(L)\tilde{z}_{t}\tilde{z}_{t-k} & = & \theta(L)\varepsilon_{t}\tilde{z}_{t-k}\\
-\phi(L)E(\tilde{z}_{t}\tilde{z}_{t-k}) & = & \theta(L)E(\varepsilon_{t}\tilde{z}_{t-k}).
+E((\phi(L)\tilde{z}_{t})\tilde{z}_{t-k}) & = & E((\theta(L)\varepsilon_{t})\tilde{z}_{t-k}).
 \end{eqnarray*}
 
 \end_inset
@@ -182,9 +212,473 @@ Cuando se estime
 \begin_inset Formula $d$
 \end_inset
 
- el siguiente paso es estimar un modelo para la serie diferenciada, que
- como se sabe, es una serie que debería obedecer un modelo 
+ el siguiente paso es identificar un modelo para la serie diferenciada,
+ que como se sabe, es una serie que debería obedecer un modelo 
 \begin_inset Formula $ARMA$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Identificación de modelos 
+\begin_inset Formula $AR(p)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Una forma de identificar los modelos 
+\begin_inset Formula $AR(p)$
+\end_inset
+
+ es, como se dijo anteriormente, haciendo uso de la función de autocorrelación
+ y la función de autocorrelación parcial.
+ Sabemos que el modelo 
+\begin_inset Formula $AR(p)$
+\end_inset
+
+ está descrito por
+\begin_inset Formula 
+\[
+\tilde{z}_{t}=\phi_{1}\tilde{z}_{t-1}+\phi_{2}\tilde{z}_{t-2}+\cdots+\phi_{p}\tilde{z}_{t-p}+\varepsilon_{t},
+\]
+
+\end_inset
+
+y su función de autocorrelación está descrita por
+\begin_inset Formula 
+\begin{equation}
+\rho_{k}=\phi_{1}\rho_{k-1}+\phi_{2}\rho_{k-2}+\cdots+\phi_{p}\rho_{k-p}.\label{eq:idarp_recur}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+De antemano no conocemos la función de autocorrelación pero podemos usar
+ la función de autocorrelación estimada que deriva de una serie de tiempo
+ que queramos estudiar.
+ Sea 
+\begin_inset Formula $\boldsymbol{x}=(x_{0},x_{1},x_{2},\cdots,x_{n})$
+\end_inset
+
+ esta serie de tiempo, entonces se puede calcular la función de autocorrelación
+ estimada de la siguiente forma: 
+\begin_inset Formula 
+\[
+\hat{\rho}_{k}=\frac{\sum_{i=0}^{n}(x_{i}-\overline{x})(x_{i-k}-\overline{x})}{\sum_{i=0}^{n}(x_{i}-\overline{x})^{2}},
+\]
+
+\end_inset
+
+donde 
+\begin_inset Formula $\overline{x}$
+\end_inset
+
+ es el promedio de los valores de la serie de tiempo.
+\end_layout
+
+\begin_layout Standard
+Luego con estos valores se procede a calcular la función de autocorrelación
+ parcial estimada.
+ Primero hay que tomar en cuenta la relación recursiva de 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:idarp_recur"
+
+\end_inset
+
+ y expresarla de la siguiente forma: 
+\begin_inset Formula 
+\[
+\hat{\rho}_{j}=\phi_{k1}\hat{\rho}_{j-1}+\phi_{k2}\hat{\rho}_{j-2}+\cdots+\phi_{kk}\hat{\rho}_{j-k},
+\]
+
+\end_inset
+
+para 
+\begin_inset Formula $j=1,2,\ldots,k$
+\end_inset
+
+.
+ Los valores 
+\begin_inset Formula $\phi_{kk}$
+\end_inset
+
+ son los valores de la función de autocorrelación parcial estimada en 
+\begin_inset Formula $k$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Esta función de autocorrelación parcial estimada se puede calcular del sistema
+\begin_inset Formula 
+\begin{equation}
+\boldsymbol{\hat{\rho}}=\boldsymbol{R}\boldsymbol{\phi_{k}}\label{eq:idarp_param}
+\end{equation}
+
+\end_inset
+
+donde 
+\begin_inset Formula $\boldsymbol{\hat{\rho}}=[\hat{\rho}_{1},\hat{\rho}_{2},\cdots,\hat{\rho}_{k}]^{T}$
+\end_inset
+
+, 
+\begin_inset Formula 
+\[
+\boldsymbol{R}=\left[\begin{array}{ccccc}
+1 & \hat{\rho}_{1} & \hat{\rho}_{2} & \cdots & \hat{\rho}_{k-1}\\
+\hat{\rho}_{1} & 1 & \hat{\rho}_{1} & \cdots & \hat{\rho}_{k-2}\\
+\hat{\rho}_{2} & \hat{\rho}_{1} & 1 & \cdots & \hat{\rho}_{k-3}\\
+ &  & \vdots\\
+\hat{\rho}_{k-1} & \hat{\rho}_{k-2} & \hat{\rho}_{k-3} & \cdots & 1
+\end{array}\right]
+\]
+
+\end_inset
+
+y 
+\begin_inset Formula $\boldsymbol{\phi_{k}}=[\phi_{k1},\phi_{k2},\cdots,\phi_{kk}]^{T}$
+\end_inset
+
+.
+ Notar que basta calcular para valores moderados (
+\begin_inset Formula $k<4$
+\end_inset
+
+) porque en la práctica no ocurre lo contrario.
+\end_layout
+
+\begin_layout Standard
+Con el cálculo de la función de autocorrelación estimada y la función de
+ autocorrelación parcial estimada se puede dar un examen cualitativo a la
+ serie de tiempo.
+ Si vemos que la función de autocorrelación decae a cero aproximadamente
+ para algún valor de su dominio y que la función de autocorrelación parcial
+ estimada se corta a cero aproximadamente para el mismo valor del dominio
+ entonces podemos estimar que el valor de 
+\begin_inset Formula $p$
+\end_inset
+
+ es ese valor del dominio en ambas funciones.
+\end_layout
+
+\begin_layout Section
+Identificación de modelos 
+\begin_inset Formula $MA(q)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La función de autocorrelación para un modelo 
+\begin_inset Formula $MA(q)$
+\end_inset
+
+ está dada por: 
+\begin_inset Formula 
+\begin{eqnarray}
+\tilde{z}_{t} & = & \varepsilon_{t}+\theta_{1}\varepsilon_{t-1}+\theta_{2}\varepsilon_{t-2}+\cdots+\theta_{q}\varepsilon_{t-q}\nonumber \\
+\tilde{z}_{t}\tilde{z}_{t-k} & = & \varepsilon_{t}\tilde{z}_{t-k}+\theta_{1}\varepsilon_{t-1}\tilde{z}_{t-k}+\theta_{2}\varepsilon_{t-2}\tilde{z}_{t-k}+\cdots+\theta_{q}\varepsilon_{t-q}\tilde{z}_{t-k}\nonumber \\
+\rho_{k} & = & \frac{-\theta_{k}+\theta_{1}\theta_{k+1}+\cdots\theta_{q-k}\theta_{q}}{1+\theta_{1}^{2}+\theta_{2}^{2}+\cdots+\theta_{q}^{2}}\label{eq:idmaq_fac}
+\end{eqnarray}
+
+\end_inset
+
+y 
+\begin_inset Formula $\rho_{k}=0$
+\end_inset
+
+ para 
+\begin_inset Formula $k>q$
+\end_inset
+
+.
+ Por otro lado la función de autocorrelación parcial cumple con las siguientes
+ condiciones: 
+\begin_inset Formula 
+\begin{eqnarray*}
+\phi_{11} & = & \rho_{1}\\
+\phi_{22} & = & \frac{\left|\begin{array}{cc}
+1 & \rho_{1}\\
+\rho_{1} & \rho_{2}
+\end{array}\right|}{\left|\begin{array}{cc}
+1 & \rho_{1}\\
+\rho_{1} & 1
+\end{array}\right|}=\frac{\rho_{2}-\rho_{1}^{2}}{1-\rho_{1}^{2}}\\
+\phi_{33} & = & \frac{\left|\begin{array}{ccc}
+1 & \rho_{1} & \rho_{1}\\
+\rho_{1} & 1 & \rho_{2}\\
+\rho_{2} & \rho_{1} & \rho_{3}
+\end{array}\right|}{\left|\begin{array}{ccc}
+1 & \rho_{1} & \rho_{2}\\
+\rho_{1} & 1 & \rho_{2}\\
+\rho_{2} & \rho_{1} & 1
+\end{array}\right|}.
+\end{eqnarray*}
+
+\end_inset
+
+En este caso la función de autocorrelación se corta abruptamente en 
+\begin_inset Formula $q$
+\end_inset
+
+ y la función de autocorrelación parcial decae a cero aproximadamente en
+ 
+\begin_inset Formula $q$
+\end_inset
+
+.
+ Esta relación entre la función de autocorrelación y la función de autocorrelaci
+ón parcial en los modelos 
+\begin_inset Formula $MA(q)$
+\end_inset
+
+ es inversa con relación con los modelos 
+\begin_inset Formula $AR(p)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Sabiendo esto, bastaría con calcular la función de autocorrelación estimada
+ para que nos demos una idea del valor de 
+\begin_inset Formula $q$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Identificación de modelos 
+\begin_inset Formula $ARMA(p,q)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+El método de identificación aplicado a los modelos 
+\begin_inset Formula $ARMA(p,q)$
+\end_inset
+
+ es una combinación es una de los dos anteriores.
+ Si analizamos la función de autocorrelación estimada y vemos anomalías
+ que no encajan en los dos métodos anteriores se tendría que sospechar de
+ un modelo 
+\begin_inset Formula $ARMA$
+\end_inset
+
+.
+ Estas anomalías pueden ser, por ejemplo, que las funciones de autocorrelación
+ y autocorrelación parcial decaigan a cero en un valor de forma simultanea
+ sabiendo que, si fuera el caso de un modelo 
+\begin_inset Formula $AR(p)$
+\end_inset
+
+ o un modelo 
+\begin_inset Formula $MA(q)$
+\end_inset
+
+, entonces una decaería y la otra se cortaría abruptamente a cero aproximadament
+e.
+\end_layout
+
+\begin_layout Section
+Estimación inicial de parámetros
+\end_layout
+
+\begin_layout Subsection
+Estimación inicial de parámetros para modelos 
+\begin_inset Formula $AR(p)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La estimación inicial de los parámetros 
+\begin_inset Formula $\phi_{1},\phi_{2},\cdots,\phi_{ṕ}$
+\end_inset
+
+ se hará mediante el uso de la función de autocorrelación estimada y utilizando
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:idarp_param"
+
+\end_inset
+
+.
+ Basta con calcular 
+\begin_inset Formula $\boldsymbol{R^{-1}}$
+\end_inset
+
+y se obtendrá el valor de 
+\begin_inset Formula $\boldsymbol{\phi}=[\phi_{1},\phi_{2},\cdots,\phi_{p}]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Estimación inicial de parámetros para modelos 
+\begin_inset Formula $MA(q)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para la estimación de inicial de parámetros 
+\begin_inset Formula $\theta_{1},\theta_{2},\cdots,\theta_{q}$
+\end_inset
+
+ se hará uso de 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:idmaq_fac"
+
+\end_inset
+
+.
+ Mediante esta relación y reemplazando los valores de 
+\begin_inset Formula $\rho_{k}$
+\end_inset
+
+ por los valores de la función de autocorrelación estimadad se puede hallar
+ los valores buscados.
+ Debido a que esta relación en no lineal se presenta un cálculo problemático
+ pero hay que tener en cuenta que en los casos prácticos el valor de 
+\begin_inset Formula $q$
+\end_inset
+
+ rara vez supera el valor de 2.
+ Así, por ejemplo, para 
+\begin_inset Formula $q=1$
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:idmaq_fac"
+
+\end_inset
+
+ se puede reducir a 
+\begin_inset Formula 
+\[
+\hat{\rho}_{k}=\frac{-\theta_{k}}{1+\theta_{1}^{2}}.
+\]
+
+\end_inset
+
+Para 
+\begin_inset Formula $k=1$
+\end_inset
+
+ y 
+\begin_inset Formula $k=2$
+\end_inset
+
+ tenemos
+\begin_inset Formula 
+\begin{eqnarray*}
+\hat{\rho}_{1} & = & \frac{-\theta_{1}}{1+\theta_{1}^{2}}\\
+\theta_{1} & = & -\frac{1}{2\hat{\rho}_{1}}\pm\sqrt{\frac{1}{(2\hat{\rho}_{1})^{2}}-1}.
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Estimación inicial de parámetros para modelos 
+\begin_inset Formula $ARMA(p,q)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La función de autocorrelación para los modelos 
+\begin_inset Formula $ARMA(p,q)$
+\end_inset
+
+ puede ser compleja para valores altos de 
+\begin_inset Formula $p$
+\end_inset
+
+ y 
+\begin_inset Formula $q$
+\end_inset
+
+ pero para simplificar la exposición se tomará valores pequeños de ambos
+ parámetros, digamos 
+\begin_inset Formula $p=1$
+\end_inset
+
+ y 
+\begin_inset Formula $q=1$
+\end_inset
+
+.
+ Luego, el modelo 
+\begin_inset Formula $ARMA(1,1)$
+\end_inset
+
+ está representado por 
+\begin_inset Formula 
+\[
+\tilde{z_{t}}=\phi_{1}\tilde{z}_{t-1}+\varepsilon_{t}+\theta_{1}\varepsilon_{t-1}.
+\]
+
+\end_inset
+
+Calculado la función de autocorrelación para 
+\begin_inset Formula $k=1$
+\end_inset
+
+ tenemos 
+\begin_inset Formula 
+\begin{eqnarray*}
+\tilde{z}_{t}\tilde{z}_{t-1} & = & \phi_{1}\tilde{z}_{t-1}\tilde{z}_{t-1}+\varepsilon_{t}\tilde{z}_{t-1}+\theta_{1}\varepsilon_{t-1}\tilde{z}_{t-1}\\
+E(\tilde{z}_{t}\tilde{z}_{t-1}) & = & \phi_{1}E(\tilde{z}_{t-1}\tilde{z}_{t-1})+E(\varepsilon_{t}\tilde{z}_{t-1})+\theta_{1}E(\varepsilon_{t-1}\tilde{z}_{t-1})\\
+\rho_{1} & = & \phi_{1}\sigma_{\tilde{z}}^{2}+0+\theta_{1}E(\varepsilon_{t-1}(\phi_{1}\tilde{z}_{t-2}+\varepsilon_{t-1}+\theta_{1}\varepsilon_{t-2}))\\
+\rho_{1} & = & \phi_{1}\sigma_{\tilde{z}}^{2}+\theta_{1}+\theta_{1}\sigma_{\varepsilon}^{2}.
+\end{eqnarray*}
+
+\end_inset
+
+De igual forma para 
+\begin_inset Formula $k=2$
+\end_inset
+
+ tenemos 
+\begin_inset Formula 
+\begin{eqnarray*}
+E(\tilde{z}_{t}\tilde{z}_{t-2}) & = & \phi_{1}E(\tilde{z}_{t-1}\tilde{z}_{t-2})+E(\varepsilon_{t}\tilde{z}_{t-2})+\theta_{1}E(\varepsilon_{t-1}\tilde{z}_{t-2})\\
+\rho_{2} & = & \phi_{1}\rho_{1}.
+\end{eqnarray*}
+
+\end_inset
+
+Considerando los valores de la función de autocorrelación estimada se puede
+ hallar 
+\begin_inset Formula $\phi_{1}$
+\end_inset
+
+ y 
+\begin_inset Formula $\theta_{1}$
 \end_inset
 
 .

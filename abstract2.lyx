@@ -104,16 +104,21 @@ Serie de Tiempo Lineales Estacionarias y No Estacionarias
 
 .
  La primera parte hace un introducción de los tipos de modelos existentes
- que serán usados para modelos un fenómeno no determinístico.
+ a ser utilizados en fenómenos que tengan atributos lineales.
  
 \end_layout
 
 \begin_layout Abstract
-El primer capítulo expone las técnicas que para identificar los modelos
- que son candidatos a describir nuestro fenómeno de estudio.
- El segundo capítulo concluye exponiendo las técnicas para elegir adecuadamente
- el modelo apropiado dentro de los modelos candidatos que se generaron en
- el primer capítulo.
+El capítulo uno expone en detalle las técnicas de identificación a ser utilizado
+s con un conjunto de datos recopilados para determinar el modelo lineal
+ estacionario o no estacionario que finalmente gobernará la descripción
+ del fenómeno que se pretende explicar.
+ 
+\end_layout
+
+\begin_layout Abstract
+El capítulo dos esboza en términos generales un método de estimación o recuperac
+ión de los valores de los parámetros del modelo anteriormente seleccionado.
 \end_layout
 
 \end_body
